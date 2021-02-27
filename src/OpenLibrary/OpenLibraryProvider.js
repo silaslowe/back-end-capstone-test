@@ -6,14 +6,20 @@ export const OpenLibraryProvider = (props) => {
   const [books, setBooks] = useState({ docs: [] })
   const [cover, setCover] = useState([])
 
-  const getBooksByTitle = (title) => {
-    return fetch(`http://openlibrary.org/search.json?title=${title}`)
+  const getBooksByTitle = (title, limit) => {
+    return fetch(`http://openlibrary.org/search.json?title=${title}&limit=${limit}`)
+      .then((res) => res.json())
+      .then(setBooks)
+  }
+
+  const getBooksByAuthor = (author, limit) => {
+    return fetch(`http://openlibrary.org/search.json?author=${author}&limit=${limit}`)
       .then((res) => res.json())
       .then(setBooks)
   }
 
   return (
-    <OpenLibraryContext.Provider value={{ books, getBooksByTitle }}>
+    <OpenLibraryContext.Provider value={{ books, getBooksByTitle, getBooksByAuthor }}>
       {props.children}
     </OpenLibraryContext.Provider>
   )
