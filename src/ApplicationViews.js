@@ -1,7 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { Landing } from "./Landing"
-import { OpenLibraryList } from "./OpenLibrary/OpenLibaryList"
+import { Home } from "./Home"
+import { OpenLibrarySearch } from "./OpenLibrary/OpenLibarySearch"
+import { OpenLibrary } from "./OpenLibrary/OpenLibrary"
 import { OpenLibraryProvider } from "./OpenLibrary/OpenLibraryProvider"
 
 export const ApplicationViews = () => {
@@ -12,13 +13,14 @@ export const ApplicationViews = () => {
           exact
           path="/"
           render={(props) => {
-            return <Landing {...props} />
+            return <Home {...props} />
           }}
         />
         <Route
+          exact
           path="/searchol"
           render={(props) => {
-            return <OpenLibraryList {...props} />
+            return <OpenLibrary {...props} />
           }}
         />
       </OpenLibraryProvider>
