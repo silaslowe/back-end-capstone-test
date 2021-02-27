@@ -12,8 +12,8 @@ export const OpenLibraryProvider = (props) => {
       .then(setBooks)
   }
 
-  const getBooksByAuthor = (author) => {
-    return fetch(`http://openlibrary.org/search.json?author=${author}`)
+  const getBooksByAuthor = (author, limit) => {
+    return fetch(`http://openlibrary.org/search.json?author=${author}&limit=${limit}`)
       .then((res) => res.json())
       .then(setBooks)
   }
