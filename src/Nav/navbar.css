@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background: lightblue;
+  margin: 0;
+  padding: 3em;
+}
+
+.navbar__item {
+  width: 25%;
+  font-size: 1rem;
+}

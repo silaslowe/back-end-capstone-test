@@ -55,7 +55,7 @@ export const OpenLibrarySearch = (props) => {
         <input type="submit" />
       </form>
 
-      <div>
+      <div className="ol-books__container">
         {books.docs
           .filter((book) => book.cover_edition_key)
           //   .slice(0, numOfBooks)
@@ -69,3 +69,4 @@ export const OpenLibrarySearch = (props) => {
 
 // Add an option for how many books to display as a select or number
 // Pagination
+// Make array of all covers
