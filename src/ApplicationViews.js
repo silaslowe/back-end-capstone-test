@@ -1,11 +1,11 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Home } from "./Home"
-import { OpenLibrarySearch } from "./OpenLibrary/OpenLibarySearch"
-import { OpenLibrary } from "./OpenLibrary/OpenLibrary"
-import { OpenLibraryProvider } from "./OpenLibrary/OpenLibraryProvider"
+import { OpenLibrarySearch } from "./components/OpenLibrary/OpenLibarySearch"
+import { OpenLibrary } from "./components/OpenLibrary/OpenLibrary"
+import { OpenLibraryProvider } from "./components/OpenLibrary/OpenLibraryProvider"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = (props) => {
   return (
     <>
       <OpenLibraryProvider>
