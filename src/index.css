@@ -1,6 +1,6 @@
-@import "./OpenLibrary/openlibrarycss/openlibrarysearch.css";
-@import "./OpenLibrary/openlibrarycss/openlibrarybook.css";
-@import "./Nav/navbar.css";
+@import "./components/OpenLibrary/openlibrarycss/openlibrarysearch.css";
+@import "./components/OpenLibrary/openlibrarycss/openlibrarybook.css";
+@import "./components/Nav/navbar.css";
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
