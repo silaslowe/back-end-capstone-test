@@ -6,7 +6,7 @@ import { OpenLibrary } from "./components/OpenLibrary/OpenLibrary"
 import { OpenLibraryProvider } from "./components/OpenLibrary/OpenLibraryProvider"
 import { ProfileProvider } from "./components/Profile/ProfileProvider"
 import { CurrentProfile } from "./components/Profile/CurrentProfile"
-import { Guide } from "./components/GuideForm/Guide"
+import { Guide } from "./components/GuideDisplay/Guide"
 import { BooksProvider } from "./components/Books/BooksProvider"
 
 export const ApplicationViews = (props) => {

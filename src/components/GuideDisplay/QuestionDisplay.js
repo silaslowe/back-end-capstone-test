@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react"
-import { BooksContext } from "../Books/BooksProvider"
+import { QuestionContext } from "../Books/BooksProvider"
 
 export const BookDisplay = (props) => {
-  const { book, getSingleBook } = useContext(BooksContext)
+  const { questions, getQuestion } = useContext(QuestionsContext)
   const bookId = parseInt(props.match.params.bookId)
   useEffect(() => {
     getSingleBook(bookId)
@@ -10,6 +10,7 @@ export const BookDisplay = (props) => {
   console.log(book)
   return (
     <>
+      <h2>Book Details:</h2>
       <img src={book.cover_url} />
       <h3>Title: {book.title}</h3>
       <h3>Author: {book.author}</h3>

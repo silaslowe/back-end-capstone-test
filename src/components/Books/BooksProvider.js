@@ -5,7 +5,7 @@ export const BooksContext = React.createContext()
 
 export const BooksProvider = (props) => {
   const [books, setBooks] = useState([])
-  const [book, setBook] = useState({})
+  const [book, setBook] = useState({ topics: [], skills: [], questions: [], vocab: [] })
   const history = useHistory()
 
   const getBooks = () => {
