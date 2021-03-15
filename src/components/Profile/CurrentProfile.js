@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider.js"
 import { BooksContext } from "../Books/BooksProvider.js"
+import { NavBar } from "../Nav/Nav"
 
 export const CurrentProfile = (props) => {
   const { profile, getCurrentProfile } = useContext(ProfileContext)
@@ -19,6 +20,7 @@ export const CurrentProfile = (props) => {
 
   return (
     <>
+      <NavBar {...props} />
       <h1>Current Profile</h1>
     </>
   )

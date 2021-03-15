@@ -5,30 +5,30 @@ import { OpenLibraryBook } from "./OpenLibraryBook"
 
 export const OpenLibrarySearch = (props) => {
   const { register, handleSubmit } = useForm()
-  const { getBooksByTitle, getBooksByAuthor, books } = useContext(OpenLibraryContext)
-  const [search, setSearch] = useState({})
+  const { getOLBooksByTitle, getOLBooksByAuthor, oLBooks } = useContext(OpenLibraryContext)
+  const [oLSearch, setOLSearch] = useState({})
   //   const [numOfBooks, setNumOfBooks] = useState("")
 
   const onSubmitTitle = (search) => {
     const replaced = search.searchByTitle.replace(/" "/g, "%20")
     const numOfBooks = parseInt(search.numberOfBooksByTitle) + 15
-    getBooksByTitle(replaced, numOfBooks)
+    getOLBooksByTitle(replaced, numOfBooks)
   }
 
   const onSubmitAuthor = (search) => {
     const replaced = search.searchByAuthor.replace(/" "/g, "%20")
     const numOfBooks = parseInt(search.numberOfBooksByTitle)
-    getBooksByAuthor(replaced, numOfBooks)
+    getOLBooksByAuthor(replaced, numOfBooks)
   }
 
   const handleControlledInputChange = (event) => {
     const newSearch = Object.assign({}, register) // Create copy
     newSearch[event.target.name] = event.target.value // Modify copy
-    setSearch(newSearch) // Set copy as new state
+    setOLSearch(newSearch) // Set copy as new state
     // setNumOfBooks(newSearch.numberOfBooksByTitle))
     // console.log(numOfBooks)
   }
-  console.log("books", books)
+  console.log("books", oLBooks)
   //   console.log("SEARCH", search)
   return (
     <>
@@ -56,7 +56,7 @@ export const OpenLibrarySearch = (props) => {
       </form>
 
       <div className="ol-books__container">
-        {books.docs
+        {oLBooks.docs
           .filter((book) => book.cover_edition_key)
           //   .slice(0, numOfBooks)
           .map((book) => (
