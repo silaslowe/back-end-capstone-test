@@ -26,8 +26,19 @@ export const BooksProvider = (props) => {
       .then(setBook)
   }
 
+  const createNewGuide = (bookObj) => {
+    return fetch("http://localhost:8000/books", {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookObj),
+    }).then(getBooks)
+  }
+
   return (
-    <BooksContext.Provider value={{ books, book, getBooks, getSingleBook }}>
+    <BooksContext.Provider value={{ books, book, getBooks, getSingleBook, createNewGuide }}>
       {props.children}
     </BooksContext.Provider>
   )
