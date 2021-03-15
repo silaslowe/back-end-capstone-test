@@ -25,11 +25,8 @@ export const OpenLibrarySearch = (props) => {
     const newSearch = Object.assign({}, register) // Create copy
     newSearch[event.target.name] = event.target.value // Modify copy
     setOLSearch(newSearch) // Set copy as new state
-    // setNumOfBooks(newSearch.numberOfBooksByTitle))
-    // console.log(numOfBooks)
   }
   console.log("books", oLBooks)
-  //   console.log("SEARCH", search)
   return (
     <>
       <h1>Open Library Search</h1>
@@ -58,6 +55,7 @@ export const OpenLibrarySearch = (props) => {
       <div className="ol-books__container">
         {oLBooks.docs
           .filter((book) => book.cover_edition_key)
+          .filter((book) => book.author_name)
           //   .slice(0, numOfBooks)
           .map((book) => (
             <OpenLibraryBook key={book.edition_key[0]} props={props} book={book} />
