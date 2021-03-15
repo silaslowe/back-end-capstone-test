@@ -40,7 +40,7 @@ export const BooksProvider = (props) => {
       .then((res) => res.json())
       .then((res) => {
         getBooks()
-        history.push(`/guide-form/${res.id}`)
+        history.push(`/guide/${res.id}`)
       })
   }
 

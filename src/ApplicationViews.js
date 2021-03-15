@@ -6,7 +6,7 @@ import { OpenLibrary } from "./components/OpenLibrary/OpenLibrary"
 import { OpenLibraryProvider } from "./components/OpenLibrary/OpenLibraryProvider"
 import { ProfileProvider } from "./components/Profile/ProfileProvider"
 import { CurrentProfile } from "./components/Profile/CurrentProfile"
-import { GuideForm } from "./components/GuideForm/GuideForm"
+import { Guide } from "./components/GuideForm/Guide"
 import { BooksProvider } from "./components/Books/BooksProvider"
 
 export const ApplicationViews = (props) => {
@@ -37,9 +37,9 @@ export const ApplicationViews = (props) => {
               }}
             />
             <Route
-              path="/guide-form/:bookId(\d+)"
+              path="/guide/:bookId(\d+)"
               render={(props) => {
-                return <GuideForm {...props} />
+                return <Guide {...props} />
               }}
             />
           </ProfileProvider>
