@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 
 export const BooksContext = React.createContext()
 
 export const BooksProvider = (props) => {
   const [books, setBooks] = useState([])
-  const [book, setBook] = useState({})
+  const [book, setBook] = useState({ topics: [], skills: [], questions: [], vocab: [] })
+  const history = useHistory()
 
   const getBooks = () => {
     return fetch("http://localhost:8000/books", {
@@ -34,7 +36,12 @@ export const BooksProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(bookObj),
-    }).then(getBooks)
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        getBooks()
+        history.push(`/guide/${res.id}`)
+      })
   }
 
   return (
