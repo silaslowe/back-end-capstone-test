@@ -5,7 +5,7 @@ export const BooksContext = React.createContext()
 
 export const BooksProvider = (props) => {
   const [books, setBooks] = useState([])
-  const [book, setBook] = useState({ topics: [], skills: [], questions: [], vocab: [] })
+  const [book, setBook] = useState({ topics: [], skills: [], questions: [], vocab: [], author: [] })
   const history = useHistory()
 
   const getBooks = () => {
@@ -44,8 +44,20 @@ export const BooksProvider = (props) => {
       })
   }
 
+  const booksByCurrentUser = () => {
+    return fetch("http://localhost:8000/books/books_by_current_profile", {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
   return (
-    <BooksContext.Provider value={{ books, book, getBooks, getSingleBook, createNewGuide }}>
+    <BooksContext.Provider
+      value={{ books, book, getBooks, getSingleBook, createNewGuide, booksByCurrentUser }}
+    >
       {props.children}
     </BooksContext.Provider>
   )

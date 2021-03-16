@@ -4,7 +4,7 @@ export const ProfileContext = React.createContext()
 
 export const ProfileProvider = (props) => {
   const [profiles, setProfiles] = useState([])
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState({ user: {} })
 
   const getProfiles = () => {
     return fetch("http://localhost:8000/profiles", {
