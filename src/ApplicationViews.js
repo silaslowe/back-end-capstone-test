@@ -8,6 +8,7 @@ import { ProfileProvider } from "./components/Profile/ProfileProvider"
 import { CurrentProfile } from "./components/Profile/CurrentProfile"
 import { Guide } from "./components/GuideDisplay/Guide"
 import { BooksProvider } from "./components/Books/BooksProvider"
+import { GuideEdit } from "./components/GuideEdit/GuideEdit"
 
 export const ApplicationViews = (props) => {
   return (
@@ -40,6 +41,12 @@ export const ApplicationViews = (props) => {
               path="/guide/:bookId(\d+)"
               render={(props) => {
                 return <Guide {...props} />
+              }}
+            />
+            <Route
+              path="/guide-edit/:bookId(\d+)"
+              render={(props) => {
+                return <GuideEdit {...props} />
               }}
             />
           </ProfileProvider>
