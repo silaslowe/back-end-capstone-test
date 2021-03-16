@@ -1,11 +1,12 @@
 import React from "react"
 import { NavBar } from "../Nav/Nav"
+import { BookEdit } from "./BookEdit"
 
 export const GuideEdit = (props) => {
   return (
     <>
       <NavBar />
-      <h1>Edit Guide</h1>
+      <BookEdit {...props} />
     </>
   )
 }
