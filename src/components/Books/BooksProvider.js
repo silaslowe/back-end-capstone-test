@@ -45,7 +45,7 @@ export const BooksProvider = (props) => {
   }
 
   const editBook = (bookObj) => {
-    return fetch("http://localhost:8000/books", {
+    return fetch(`http://localhost:8000/books/${bookObj.id}`, {
       method: "PUT",
       headers: {
         "Authorization": `Token ${localStorage.getItem("active_user")}`,
@@ -53,10 +53,6 @@ export const BooksProvider = (props) => {
       },
       body: JSON.stringify(bookObj),
     })
-      .then((res) => res.json())
-      .then((res) => {
-        getBooks()
-      })
   }
   const booksByCurrentUser = () => {
     return fetch("http://localhost:8000/books/books_by_current_profile", {
