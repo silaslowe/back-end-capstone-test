@@ -7,11 +7,6 @@ export const ProfileBookDisplay = (props) => {
   const history = useHistory()
   const book = props.book
 
-  // useEffect(() => {
-  //   setAuthors(book.author_name)
-  //   console.log(authors)
-  // }, [book])
-
   return (
     <>
       <div key={book.id} className="ol-book">

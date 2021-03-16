@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 
 export const BookDisplay = (props) => {
   const book = props.book
+  const history = useHistory()
   console.log(book)
   return (
     <>
@@ -33,6 +35,13 @@ export const BookDisplay = (props) => {
           <p>Definiton: {vocab.definition}</p>
         </div>
       ))}
+      <button
+        onClick={() => {
+          history.push(`/guide-edit/${book.id}`)
+        }}
+      >
+        Edit Guide
+      </button>
     </>
   )
 }
