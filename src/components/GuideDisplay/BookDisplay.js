@@ -18,19 +18,19 @@ export const BookDisplay = (props) => {
       <h3>Rating: {book.rating}</h3>
       <h2>Topics:</h2>
       {book.topics.map((topic) => (
-        <p>{topic.topic}</p>
+        <p key={topic.id}>{topic.topic}</p>
       ))}
       <h2>Skills:</h2>
       {book.skills.map((skill) => (
-        <p>{skill.skill}</p>
+        <p key={skill.id}>{skill.skill}</p>
       ))}
       <h2>Questions:</h2>
       {book.questions.map((question) => (
-        <p>{question.question}</p>
+        <p key={question.id}>{question.question}</p>
       ))}
       <h2>Vocabulary Words:</h2>
       {book.vocab.map((vocab) => (
-        <div>
+        <div key={vocab.id}>
           <p>Word: {vocab.word}</p>
           <p>Definiton: {vocab.definition}</p>
         </div>

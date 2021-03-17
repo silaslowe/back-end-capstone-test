@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from "react"
-import { TopicsContext } from "../Topics/TopicsProvider"
+import { SkillContext } from "../Skills/SkillsProvider"
 import { useParams } from "react-router-dom"
 
-export const TopicsEdit = (props) => {
-  const { topics, getTopicsByBook, destroyTopicRel, setTopics, createTopic } = useContext(
+export const SkillsEdit = (props) => {
+  const { skills, getSkillsByBook, destroyTopicRel, setTopics, createTopic } = useContext(
     TopicsContext
   )
   const topic = useRef()
