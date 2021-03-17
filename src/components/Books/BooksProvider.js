@@ -54,6 +54,7 @@ export const BooksProvider = (props) => {
       body: JSON.stringify(bookObj),
     })
   }
+
   const booksByCurrentUser = () => {
     return fetch("http://localhost:8000/books/books_by_current_profile", {
       headers: {
