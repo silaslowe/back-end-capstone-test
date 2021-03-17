@@ -47,7 +47,7 @@ export const TopicsProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(topicObj),
-    }).then(getTopics)
+    }).then(() => getTopicsByBook(topicObj.bookId))
   }
   return (
     <TopicsContext.Provider
