@@ -23,7 +23,7 @@ export const SkillsEdit = (props) => {
       <form className="skill-form">
         <fieldset>
           <div className="form-group">
-            <label htmlFor="question">Question: </label>
+            <label htmlFor="question"></label>
             <input type="text" name="skill" required autoFocus ref={skill} />
             <input
               type="button"

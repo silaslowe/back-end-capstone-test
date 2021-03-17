@@ -23,7 +23,7 @@ export const TopicsEdit = (props) => {
       <form className="topic-form">
         <fieldset>
           <div className="form-group">
-            <label htmlFor="question">Question: </label>
+            <label htmlFor="question"> </label>
             <input type="text" name="topic" required autoFocus ref={topic} />
             <input
               type="button"
