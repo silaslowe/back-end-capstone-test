@@ -3,25 +3,25 @@ import { SkillContext } from "../Skills/SkillsProvider"
 import { useParams } from "react-router-dom"
 
 export const SkillsEdit = (props) => {
-  const { skills, getSkillsByBook, destroyTopicRel, setTopics, createTopic } = useContext(
-    TopicsContext
+  const { skills, getSkillsByBook, destroyTopicRel, setSkills, createTopic } = useContext(
+    SkillsContext
   )
   const topic = useRef()
   //   const topicToLower = topic.toLowerCase()
   const bookId = parseInt(useParams().bookId)
-  const [booktopics, setBookTopics] = useState([])
+  const [bookskills, setBookSkills] = useState([])
 
   useEffect(() => {
-    getTopicsByBook(bookId).then((res) => setTopics(res))
+    getSkillsByBook(bookId).then((res) => setSkils(res))
   }, [])
 
   useEffect(() => {
-    getTopicsByBook(bookId).then(setTopics)
-  }, [booktopics])
+    getSkillsByBook(bookId).then(setSkills)
+  }, [bookskills])
   console.log(topic)
   return (
     <>
-      <h1>Topics</h1>
+      <h1>Skills</h1>
       <form className="topic-form">
         <h2 className="topic-form__title">Edit Book</h2>
         <fieldset>
@@ -35,9 +35,9 @@ export const SkillsEdit = (props) => {
                 createTopic({
                   bookId: bookId,
                   topic: topic.current.value.toLowerCase(),
-                }).then((t) => {
-                  setTopics(t)
-                  setBookTopics(t)
+                }).then((s) => {
+                  setSkills(s)
+                  setBookSkills(s)
                 })
               }}
             />
@@ -45,14 +45,14 @@ export const SkillsEdit = (props) => {
         </fieldset>
       </form>
 
-      {topics.map((topic) => (
+      {skills.map((topic) => (
         <div className="topic">
           <p>{topic.topic}</p>
           <button
             onClick={() => {
               destroyTopicRel({ bookId: bookId, topicId: topic.id }).then((t) => {
-                setTopics(t)
-                setBookTopics(t)
+                setSkills(s)
+                setBookSkills(s)
               })
             }}
           >
