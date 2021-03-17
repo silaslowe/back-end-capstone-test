@@ -7,6 +7,13 @@ export const BookDisplay = (props) => {
   console.log(book)
   return (
     <>
+      <button
+        onClick={() => {
+          history.push(`/guide-edit/${book.id}`)
+        }}
+      >
+        Edit Guide
+      </button>
       <h2>Book Details:</h2>
       <img src={book.cover_url} />
       <h3>Title: {book.title}</h3>
@@ -35,13 +42,6 @@ export const BookDisplay = (props) => {
           <p>Definiton: {vocab.definition}</p>
         </div>
       ))}
-      <button
-        onClick={() => {
-          history.push(`/guide-edit/${book.id}`)
-        }}
-      >
-        Edit Guide
-      </button>
     </>
   )
 }

@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom"
 import { NavBar } from "../Nav/Nav"
 import { BookEdit } from "./BookEdit"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
+import { SkillsEdit } from "./SkillsEdit"
 import { TopicsEdit } from "./TopicsEdit"
 
 export const GuideEdit = (props) => {
@@ -13,6 +14,7 @@ export const GuideEdit = (props) => {
       <NavBar />
       <BookEdit {...props} />
       <TopicsEdit {...props} />
+      <SkillsEdit {...props} />
       <QuestionEditDisplay {...props} />
       <button onClick={() => history.push(`/guide/${bookId}`)}>Save</button>
     </>
