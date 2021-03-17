@@ -12,7 +12,7 @@ export const QuestionEditDisplay = (props) => {
   return (
     <>
       <h2>Questions</h2>
-      <QuestionCreateForm />
+      {/* <QuestionCreateForm {...props} /> */}
       <div className="question-container">
         {questions.map((question) => (
           <Question key={question.id} props={props} question={question} />

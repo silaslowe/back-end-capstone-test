@@ -36,8 +36,8 @@ export const BookEdit = (props) => {
   console.log(book)
   return (
     <>
-      <img src={book.cover_url} alt={`${book.title} cover art`} />
       <form className="book-form">
+        <img src={book.cover_url} alt={`${book.title} cover art`} />
         <h2 className="book-form__title">Edit Book</h2>
         <fieldset>
           <div className="form-group">

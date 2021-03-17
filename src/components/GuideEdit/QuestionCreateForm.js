@@ -2,11 +2,14 @@ import React, { useState, useContext, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { QuestionsContext } from "../Questions/QuestionProvider"
 
-export const QuestionCreateForm = () => {
+export const QuestionCreateForm = (props) => {
   const { createQuestion } = useContext(QuestionsContext)
-  const bookId = useParams.bookId
+  const bookId = parseInt(useParams().bookId)
   const question = useRef()
   const page = useRef()
+
+  console.log(bookId)
+  console.log("Props", props)
 
   return (
     <form className="question-form">
