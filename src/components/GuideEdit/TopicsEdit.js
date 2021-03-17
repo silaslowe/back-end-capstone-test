@@ -7,7 +7,6 @@ export const TopicsEdit = (props) => {
     TopicsContext
   )
   const topic = useRef()
-  //   const topicToLower = topic.toLowerCase()
   const bookId = parseInt(useParams().bookId)
   const [booktopics, setBookTopics] = useState([])
 
@@ -23,7 +22,6 @@ export const TopicsEdit = (props) => {
     <>
       <h1>Topics</h1>
       <form className="topic-form">
-        <h2 className="topic-form__title">Edit Book</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="question">Question: </label>

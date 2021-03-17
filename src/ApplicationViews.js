@@ -11,6 +11,7 @@ import { BooksProvider } from "./components/Books/BooksProvider"
 import { GuideEdit } from "./components/GuideEdit/GuideEdit"
 import { QuesitonsProvider } from "./components/Questions/QuestionProvider"
 import { TopicsProvider } from "./components/Topics/TopicsProvider"
+import { SkillsProvider } from "./components/Skills/SkillsProvider"
 
 export const ApplicationViews = (props) => {
   return (
@@ -20,39 +21,41 @@ export const ApplicationViews = (props) => {
           <ProfileProvider>
             <QuesitonsProvider>
               <TopicsProvider>
-                <Route
-                  exact
-                  path="/"
-                  render={(props) => {
-                    return <Home {...props} />
-                  }}
-                />
-                <Route
-                  exact
-                  path="/searchol"
-                  render={(props) => {
-                    return <OpenLibrary {...props} />
-                  }}
-                />
-                <Route
-                  exact
-                  path="/profile"
-                  render={(props) => {
-                    return <CurrentProfile {...props} />
-                  }}
-                />
-                <Route
-                  path="/guide/:bookId(\d+)"
-                  render={(props) => {
-                    return <Guide {...props} />
-                  }}
-                />
-                <Route
-                  path="/guide-edit/:bookId(\d+)"
-                  render={(props) => {
-                    return <GuideEdit {...props} />
-                  }}
-                />
+                <SkillsProvider>
+                  <Route
+                    exact
+                    path="/"
+                    render={(props) => {
+                      return <Home {...props} />
+                    }}
+                  />
+                  <Route
+                    exact
+                    path="/searchol"
+                    render={(props) => {
+                      return <OpenLibrary {...props} />
+                    }}
+                  />
+                  <Route
+                    exact
+                    path="/profile"
+                    render={(props) => {
+                      return <CurrentProfile {...props} />
+                    }}
+                  />
+                  <Route
+                    path="/guide/:bookId(\d+)"
+                    render={(props) => {
+                      return <Guide {...props} />
+                    }}
+                  />
+                  <Route
+                    path="/guide-edit/:bookId(\d+)"
+                    render={(props) => {
+                      return <GuideEdit {...props} />
+                    }}
+                  />
+                </SkillsProvider>
               </TopicsProvider>
             </QuesitonsProvider>
           </ProfileProvider>
