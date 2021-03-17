@@ -28,7 +28,7 @@ export const QuesitonsProvider = (props) => {
       .then(setQuestion)
   }
 
-  const createNewQuestion = (questionObj) => {
+  const createQuestion = (questionObj) => {
     return fetch("http://localhost:8000/questions", {
       method: "POST",
       headers: {
@@ -36,16 +36,40 @@ export const QuesitonsProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(questionObj),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        getQuestions()
-      })
+    }).then(getQuestions)
+  }
+
+  const editQuestion = (questionObj) => {
+    return fetch(`http://localhost:8000/questions/${questionObj.id}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(questionObj),
+    }).then(getQuestions)
+  }
+
+  const destroyQuestion = (id) => {
+    return fetch(`http://localhost:8000/questions/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    }).then(getQuestions)
   }
 
   return (
     <QuestionsContext.Provider
-      value={{ questions, question, getQuestions, getSingleQuestion, createNewQuestion }}
+      value={{
+        questions,
+        question,
+        getQuestions,
+        getSingleQuestion,
+        createQuestion,
+        destroyQuestion,
+        editQuestion,
+      }}
     >
       {props.children}
     </QuestionsContext.Provider>
