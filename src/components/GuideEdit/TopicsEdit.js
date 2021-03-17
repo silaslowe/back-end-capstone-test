@@ -17,7 +17,6 @@ export const TopicsEdit = (props) => {
   useEffect(() => {
     getTopicsByBook(bookId).then(setTopics)
   }, [booktopics])
-  console.log(topic)
   return (
     <>
       <h1>Topics</h1>
@@ -44,7 +43,7 @@ export const TopicsEdit = (props) => {
       </form>
 
       {topics.map((topic) => (
-        <div className="topic">
+        <div className="topic" key={topic.id}>
           <p>{topic.topic}</p>
           <button
             onClick={() => {

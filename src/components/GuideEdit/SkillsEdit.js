@@ -43,7 +43,7 @@ export const SkillsEdit = (props) => {
       </form>
 
       {skills.map((skill) => (
-        <div className="skill">
+        <div className="skill" key={skill.id}>
           <p>{skill.skill}</p>
           <button
             onClick={() => {
