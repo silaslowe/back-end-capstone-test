@@ -26,9 +26,6 @@ export const Question = ({ question }) => {
     })
   }, [])
 
-  console.log("EditedQuestion", editedQuestion)
-  console.log("Question", question)
-
   return !edit ? (
     <>
       <p>Question: {question.question}</p>

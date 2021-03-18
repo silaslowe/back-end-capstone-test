@@ -23,7 +23,7 @@ export const SkillsEdit = (props) => {
       <form className="skill-form">
         <fieldset>
           <div className="form-group">
-            <label htmlFor="question">Question: </label>
+            <label htmlFor="question"></label>
             <input type="text" name="skill" required autoFocus ref={skill} />
             <input
               type="button"
@@ -43,7 +43,7 @@ export const SkillsEdit = (props) => {
       </form>
 
       {skills.map((skill) => (
-        <div className="skill">
+        <div className="skill" key={skill.id}>
           <p>{skill.skill}</p>
           <button
             onClick={() => {

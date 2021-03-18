@@ -5,6 +5,7 @@ import { BookEdit } from "./BookEdit"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
 import { SkillsEdit } from "./SkillsEdit"
 import { TopicsEdit } from "./TopicsEdit"
+import { VocabEditDisplay } from "./VocabEditDisplay"
 
 export const GuideEdit = (props) => {
   const history = useHistory()
@@ -15,6 +16,7 @@ export const GuideEdit = (props) => {
       <BookEdit {...props} />
       <TopicsEdit {...props} />
       <SkillsEdit {...props} />
+      <VocabEditDisplay {...props} />
       <QuestionEditDisplay {...props} />
       <button onClick={() => history.push(`/guide/${bookId}`)}>Save</button>
     </>

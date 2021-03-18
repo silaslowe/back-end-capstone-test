@@ -17,14 +17,13 @@ export const TopicsEdit = (props) => {
   useEffect(() => {
     getTopicsByBook(bookId).then(setTopics)
   }, [booktopics])
-  console.log(topic)
   return (
     <>
       <h1>Topics</h1>
       <form className="topic-form">
         <fieldset>
           <div className="form-group">
-            <label htmlFor="question">Question: </label>
+            <label htmlFor="question"> </label>
             <input type="text" name="topic" required autoFocus ref={topic} />
             <input
               type="button"
@@ -44,7 +43,7 @@ export const TopicsEdit = (props) => {
       </form>
 
       {topics.map((topic) => (
-        <div className="topic">
+        <div className="topic" key={topic.id}>
           <p>{topic.topic}</p>
           <button
             onClick={() => {

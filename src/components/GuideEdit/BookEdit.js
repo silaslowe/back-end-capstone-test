@@ -32,8 +32,6 @@ export const BookEdit = (props) => {
     setEditedBook(newBookState)
   }
 
-  console.log("In EDIT", editedBook)
-  console.log(book)
   return (
     <>
       <form className="book-form">
