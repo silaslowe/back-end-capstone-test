@@ -133,6 +133,7 @@ export const BookEdit = (props) => {
         </fieldset>
 
         <button
+          type="reset"
           onClick={(evt) => {
             // Prevent form from being submitted
             evt.preventDefault()

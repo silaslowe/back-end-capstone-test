@@ -42,8 +42,21 @@ export const VocabProvider = (props) => {
     }).then(() => getVocabByBook(vocabObj.bookId))
   }
 
+  const destroyVocabRel = (rel) => {
+    return fetch(`http://localhost:8000/vocabs/destroy_vocab_book_rel`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(rel),
+    }).then(() => getVocabByBook(rel.bookId))
+  }
+
   return (
-    <VocabContext.Provider value={{ vocabs, getVocabByBook, editVocab, createVocab, setVocabs }}>
+    <VocabContext.Provider
+      value={{ vocabs, getVocabByBook, editVocab, createVocab, setVocabs, destroyVocabRel }}
+    >
       {props.children}
     </VocabContext.Provider>
   )

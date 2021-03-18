@@ -49,6 +49,7 @@ export const TopicsProvider = (props) => {
       body: JSON.stringify(topicObj),
     }).then(() => getTopicsByBook(topicObj.bookId))
   }
+
   return (
     <TopicsContext.Provider
       value={{ topics, getTopics, getTopicsByBook, destroyTopicRel, createTopic, setTopics }}
