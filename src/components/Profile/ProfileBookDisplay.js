@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom"
 export const ProfileBookDisplay = (props) => {
   const history = useHistory()
   const book = props.book
-
+  console.log("FROM DISPLAY", book)
   return (
     <>
       <div key={book.id} className="ol-book">
