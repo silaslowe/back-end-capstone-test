@@ -4,7 +4,7 @@ import { VocabContext } from "../Vocab/VocabProvider"
 
 export const Vocab = ({ vocab }) => {
   console.log(vocab)
-  const { editVocab } = useContext(VocabContext)
+  const { editVocab, destroyVocabRel } = useContext(VocabContext)
   const bookId = parseInt(useParams().bookId)
   const [edit, setEdit] = useState(false)
   const [editedVocab, setEditedVocab] = useState({
@@ -92,6 +92,18 @@ export const Vocab = ({ vocab }) => {
                   definition: editedVocab.definition,
                   notes: editedVocab.notes,
                   page: editedVocab.page,
+                  bookId: bookId,
+                })
+                setEdit(false)
+              }}
+            />
+            <input
+              type="button"
+              value="
+              Delete"
+              onClick={() => {
+                destroyVocabRel({
+                  vocabId: editedVocab.id,
                   bookId: bookId,
                 })
                 setEdit(false)
