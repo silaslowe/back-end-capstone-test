@@ -75,6 +75,16 @@ export const BooksProvider = (props) => {
       .then(setBooks)
   }
 
+  const getBooksByTopic = (search) => {
+    return fetch(`http://localhost:8000/books/books_by_current_profile?topic=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
   return (
     <BooksContext.Provider
       value={{
@@ -86,6 +96,7 @@ export const BooksProvider = (props) => {
         createNewGuide,
         booksByCurrentUser,
         getBooksBySkill,
+        getBooksByTopic,
         editBook,
       }}
     >

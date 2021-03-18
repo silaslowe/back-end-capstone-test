@@ -4,10 +4,9 @@ import { BooksContext } from "../Books/BooksProvider"
 import { ProfileBookDisplay } from "./ProfileBookDisplay"
 
 export const ProfileSearch = (props) => {
-  const { getBooksBySkill, books, setBooks } = useContext(BooksContext)
+  const { getBooksBySkill, getBooksByTopic, books, setBooks } = useContext(BooksContext)
   const { register, handleSubmit } = useForm()
   const [search, setSearch] = useState({})
-  const [filter, setFilter] = useState("")
 
   useEffect(() => {
     setBooks([])
@@ -23,7 +22,7 @@ export const ProfileSearch = (props) => {
     setSearch(newSearch) // Set copy as new state
   }
   console.log("search", search)
-  console.log("search", books)
+  console.log("BOOKS", books)
 
   return (
     <>
@@ -35,16 +34,16 @@ export const ProfileSearch = (props) => {
           type="reset"
           value="Submit"
           onClick={() => {
-            getBooksBySkill(search.skill)
+            getBooksBySkill(search.skill.toLowerCase())
           }}
         />
         <label>Seach By Topic</label>
-        <input type="text" name="skill" ref={register} />
+        <input type="text" name="topic" ref={register} />
         <input
           type="reset"
           value="Submit"
           onClick={() => {
-            getBooksBySkill(search.skill)
+            getBooksByTopic(search.topic.toLowerCase())
           }}
         />
       </form>
