@@ -2,22 +2,15 @@ import React, { useState, useContext, useEffect, useRef } from "react"
 import { VocabContext } from "../Vocab/VocabProvider"
 import { Vocab } from "./Vocab"
 import { useParams } from "react-router-dom"
-import { useForm } from "react-hook-form"
-// import { QuestionCreateForm } from "./QuestionCreateForm"
 
 export const VocabEditDisplay = (props) => {
   const { getVocabByBook, vocabs, setVocabs, createVocab } = useContext(VocabContext)
   const [bookVocabs, setBookVocabs] = useState([])
-  const { register, handleSubmit, reset } = useForm()
   const bookId = parseInt(useParams().bookId)
   const word = useRef()
   const definition = useRef()
   const notes = useRef()
   const page = useRef()
-
-  const formReset = (data, e) => {
-    e.target.reset() // reset after form submit
-  }
 
   useEffect(() => {
     getVocabByBook(bookId).then(() => setBookVocabs)
@@ -34,7 +27,7 @@ export const VocabEditDisplay = (props) => {
   return (
     <>
       <h2>Vocabulary Words</h2>
-      <form className="vocab-create-form" onSubmit={handleSubmit(formReset)}>
+      <form className="vocab-create-form">
         <fieldset>
           <div className="form-group">
             <label htmlFor="word">Vocabulary Word</label>
@@ -48,7 +41,7 @@ export const VocabEditDisplay = (props) => {
             <input
               type="reset"
               value="Add Vocabulary Word"
-              onClick={(e) => {
+              onClick={() => {
                 createVocab({
                   bookId: bookId,
                   word: word.current.value,

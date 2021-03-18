@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider.js"
 import { BooksContext } from "../Books/BooksProvider.js"
 import { NavBar } from "../Nav/Nav"
-import { ProfileBookDisplay } from "./ProfileBookDisplay"
+import { ProfileSearch } from "./ProfileSearch.js"
+import { SearchProfileBooks } from "./SearchProfileBooks.js"
 
 export const CurrentProfile = (props) => {
   const { profile, getCurrentProfile } = useContext(ProfileContext)
@@ -12,12 +13,12 @@ export const CurrentProfile = (props) => {
     getCurrentProfile()
   }, [])
 
-  useEffect(() => {
-    booksByCurrentUser()
-  }, [profile])
+  // useEffect(() => {
+  //   booksByCurrentUser()
+  // }, [profile])
 
-  console.log(profile)
-  console.log(books)
+  // console.log(profile)
+  // console.log(books)
 
   return (
     <>
@@ -31,11 +32,7 @@ export const CurrentProfile = (props) => {
         <p>Role: {profile.role}</p>
         <p>Bio: {profile.bio}</p>
       </div>
-      <div className="profile-books">
-        {books.map((book) => (
-          <ProfileBookDisplay key={book.id} {...props} book={book} />
-        ))}
-      </div>
+      <ProfileSearch {...props} />
     </>
   )
 }

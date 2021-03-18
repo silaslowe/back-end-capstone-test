@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
+import { BooksContext } from "../Books/BooksProvider"
 
 export const BookDisplay = (props) => {
+  const { setBooks, books } = useContext(BooksContext)
   const book = props.book
   const history = useHistory()
   console.log(book)
@@ -9,6 +11,7 @@ export const BookDisplay = (props) => {
     <>
       <button
         onClick={() => {
+          setBooks([])
           history.push(`/guide-edit/${book.id}`)
         }}
       >

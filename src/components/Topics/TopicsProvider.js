@@ -50,9 +50,30 @@ export const TopicsProvider = (props) => {
     }).then(() => getTopicsByBook(topicObj.bookId))
   }
 
+  // const getTopicsByBook = (bookId) => {
+  //   return fetch("http://localhost:8000/topics/get_topics_by_book", {
+  //     method: "POST",
+  //     headers: {
+  //       "Authorization": `Token ${localStorage.getItem("active_user")}`,
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       bookId: bookId,
+  //     }),
+  //   }).then((response) => response.json())
+  // }
+
   return (
     <TopicsContext.Provider
-      value={{ topics, getTopics, getTopicsByBook, destroyTopicRel, createTopic, setTopics }}
+      value={{
+        topics,
+        getTopics,
+        getTopicsByBook,
+        destroyTopicRel,
+        createTopic,
+        setTopics,
+        getTopicsByBook,
+      }}
     >
       {props.children}
     </TopicsContext.Provider>

@@ -65,15 +65,38 @@ export const BooksProvider = (props) => {
       .then(setBooks)
   }
 
+  const getBooksBySkill = (search) => {
+    return fetch(`http://localhost:8000/books/books_by_current_profile?skill=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
+  const getBooksByTopic = (search) => {
+    return fetch(`http://localhost:8000/books/books_by_current_profile?topic=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
   return (
     <BooksContext.Provider
       value={{
         books,
         book,
         getBooks,
+        setBooks,
         getSingleBook,
         createNewGuide,
         booksByCurrentUser,
+        getBooksBySkill,
+        getBooksByTopic,
         editBook,
       }}
     >
