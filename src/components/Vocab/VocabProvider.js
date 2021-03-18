@@ -30,8 +30,20 @@ export const VocabProvider = (props) => {
       body: JSON.stringify(vocabObj),
     }).then(() => getVocabByBook(vocabObj.bookId))
   }
+
+  const createVocab = (vocabObj) => {
+    return fetch(`http://localhost:8000/vocabs`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(vocabObj),
+    }).then(() => getVocabByBook(vocabObj.bookId))
+  }
+
   return (
-    <VocabContext.Provider value={{ vocabs, getVocabByBook, editVocab }}>
+    <VocabContext.Provider value={{ vocabs, getVocabByBook, editVocab, createVocab, setVocabs }}>
       {props.children}
     </VocabContext.Provider>
   )
