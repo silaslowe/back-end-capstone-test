@@ -1,15 +1,21 @@
 import React, { useState, useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { BooksContext } from "../Books/BooksProvider"
+import { QuestionsContext } from "../Questions/QuestionProvider"
 import { ProfileBookDisplay } from "./ProfileBookDisplay"
 
 export const ProfileSearch = (props) => {
   const { getBooksBySkill, getBooksByTopic, books, setBooks } = useContext(BooksContext)
+  const { setQuestions } = useContext(QuestionsContext)
   const { register, handleSubmit } = useForm()
   const [search, setSearch] = useState({})
 
   useEffect(() => {
     setBooks([])
+  }, [])
+
+  useEffect(() => {
+    setQuestions([])
   }, [])
 
   //   const onSubmitSkill = (search) => {
