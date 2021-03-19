@@ -12,7 +12,7 @@ export const BookDisplay = (props) => {
       <button
         onClick={() => {
           setBooks([])
-          history.push(`/guide-edit/${book.id}`)
+          history.push({ pathname: `/guide-edit/${book.id}`, state: { book } })
         }}
       >
         Edit Guide
