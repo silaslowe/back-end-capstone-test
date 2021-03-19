@@ -44,7 +44,6 @@ export const BookEdit = (props) => {
               type="text"
               name="title"
               required
-              autoFocus
               className="form-control"
               value={editedBook.title}
               onChange={changeBookState}
@@ -59,7 +58,6 @@ export const BookEdit = (props) => {
               type="text"
               name="author"
               required
-              autoFocus
               className="form-control"
               value={editedBook.author}
               onChange={changeBookState}
@@ -74,7 +72,6 @@ export const BookEdit = (props) => {
               type="textarea"
               name="notes"
               required
-              autoFocus
               className="form-control"
               value={editedBook.notes}
               onChange={changeBookState}
@@ -89,7 +86,6 @@ export const BookEdit = (props) => {
               type="text"
               name="location"
               required
-              autoFocus
               className="form-control"
               value={editedBook.location}
               onChange={changeBookState}
@@ -104,7 +100,6 @@ export const BookEdit = (props) => {
               type="text"
               name="synopsis"
               required
-              autoFocus
               className="form-control"
               value={editedBook.synopsis}
               onChange={changeBookState}

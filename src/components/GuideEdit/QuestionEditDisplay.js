@@ -11,6 +11,7 @@ export const QuestionEditDisplay = (props) => {
   useEffect(() => {
     getQuestionsByBook({ bookId: bookId }).then((res) => setQuestions(res))
   }, [])
+
   console.log("ID", bookId)
   console.log("QUESTIONS", questions)
   return (

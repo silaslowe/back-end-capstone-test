@@ -21,8 +21,8 @@ export const ProfileSearch = (props) => {
     newSearch[event.target.name] = event.target.value // Modify copy
     setSearch(newSearch) // Set copy as new state
   }
-  console.log("search", search)
-  console.log("BOOKS", books)
+  // console.log("search", search)
+  // console.log("BOOKS", books)
 
   return (
     <>

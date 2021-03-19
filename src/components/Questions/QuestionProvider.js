@@ -29,13 +29,12 @@ export const QuesitonsProvider = (props) => {
   }
 
   const getQuestionsByBook = (bookId) => {
-    return fetch("http://localhost:8000/questions/get_questions_by_book", {
-      method: "POST",
+    return fetch(`http://localhost:8000/questions/${bookId}/get_questions_by_book`, {
+      method: "GET",
       headers: {
         "Authorization": `Token ${localStorage.getItem("active_user")}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(bookId),
     }).then((response) => response.json())
   }
 
@@ -48,6 +47,8 @@ export const QuesitonsProvider = (props) => {
       },
       body: JSON.stringify(questionObj),
     })
+      .then((res) => res.json())
+      .then((res) => getQuestionsByBook(questionObj.bookId))
   }
 
   const editQuestion = (questionObj) => {

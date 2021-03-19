@@ -50,7 +50,6 @@ export const Question = ({ question }) => {
               type="text"
               name="question"
               required
-              autoFocus
               className="form-control"
               value={editedQuestion.question}
               onChange={changeQuestionState}

@@ -50,7 +50,6 @@ export const Vocab = ({ vocab }) => {
               type="text"
               name="word"
               required
-              autoFocus
               className="form-control"
               value={editedVocab.word}
               onChange={changeVocabState}
@@ -98,7 +97,7 @@ export const Vocab = ({ vocab }) => {
               }}
             />
             <input
-              type="button"
+              type="reset"
               value="
               Delete"
               onClick={() => {
