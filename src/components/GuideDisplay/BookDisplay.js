@@ -6,7 +6,6 @@ export const BookDisplay = (props) => {
   const { setBooks, books } = useContext(BooksContext)
   const book = props.book
   const history = useHistory()
-  console.log(book)
   return (
     <>
       <button
