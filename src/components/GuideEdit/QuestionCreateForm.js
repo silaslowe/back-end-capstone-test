@@ -3,13 +3,12 @@ import { useParams } from "react-router-dom"
 import { QuestionsContext } from "../Questions/QuestionProvider"
 
 export const QuestionCreateForm = (props) => {
-  const { createQuestion } = useContext(QuestionsContext)
+  const { createQuestion, getQuestionsByBook } = useContext(QuestionsContext)
   const bookId = parseInt(useParams().bookId)
   const question = useRef()
   const page = useRef()
 
   console.log(bookId)
-  console.log("Props", props)
 
   return (
     <form className="question-form">
@@ -21,14 +20,14 @@ export const QuestionCreateForm = (props) => {
           <label htmlFor="question-page">Page Number: </label>
           <input type="text" name="page" required className="form-control" ref={page} />
           <input
-            type="button"
+            type="reset"
             value="Add Question"
             onClick={() => {
               createQuestion({
                 bookId: bookId,
-                question: question,
-                page: page,
-              })
+                question: question.current.value,
+                page: page.current.value,
+              }).then((res) => getQuestionsByBook(res.bookId))
             }}
           />
         </div>
