@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom"
 export const OpenLibraryBook = ({ props, book }) => {
   const { createNewGuide } = useContext(BooksContext)
   const authors = book.author_name.join(", ")
+  const history = useHistory()
   return (
     <>
       <div key={book.edition_key[0]} className="ol-book">
