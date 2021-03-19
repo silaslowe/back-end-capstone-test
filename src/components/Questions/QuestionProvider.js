@@ -67,7 +67,7 @@ export const QuesitonsProvider = (props) => {
       headers: {
         "Authorization": `Token ${localStorage.getItem("active_user")}`,
       },
-    })
+    }).then(() => getQuestionsByBook(bookId))
   }
 
   return (
