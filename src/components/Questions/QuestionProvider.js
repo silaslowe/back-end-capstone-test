@@ -28,6 +28,16 @@ export const QuesitonsProvider = (props) => {
       .then(setQuestion)
   }
 
+  const getQuestionsByBook = (bookId) => {
+    return fetch(`http://localhost:8000/questions/${bookId}/get_questions_by_book`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+    }).then((response) => response.json())
+  }
+
   const createQuestion = (questionObj) => {
     return fetch("http://localhost:8000/questions", {
       method: "POST",
@@ -36,7 +46,9 @@ export const QuesitonsProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(questionObj),
-    }).then(getQuestions)
+    })
+      .then((res) => res.json())
+      .then((res) => getQuestionsByBook(questionObj.bookId))
   }
 
   const editQuestion = (questionObj) => {
@@ -64,8 +76,10 @@ export const QuesitonsProvider = (props) => {
       value={{
         questions,
         question,
+        setQuestions,
         getQuestions,
         getSingleQuestion,
+        getQuestionsByBook,
         createQuestion,
         destroyQuestion,
         editQuestion,
