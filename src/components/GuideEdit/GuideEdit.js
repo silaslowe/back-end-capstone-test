@@ -43,7 +43,7 @@ export const GuideEdit = (props) => {
     <>
       <NavBar />
       {/* <BookEdit {...props} /> */}
-      return (
+
       <>
         <form className="book-form">
           <img src={book.cover_url} alt={`${book.title} cover art`} />

@@ -12,11 +12,11 @@ export const QuestionCreateForm = (props) => {
   console.log(bookId)
 
   useEffect(() => {
-    getQuestionsByBook({ bookId: bookId }).then((res) => setQuestions(res))
+    getQuestionsByBook(bookId).then((res) => setQuestions(res))
   }, [])
 
   useEffect(() => {
-    getQuestionsByBook({ bookId: bookId }).then((res) => setQuestions(res))
+    getQuestionsByBook(bookId).then((res) => setQuestions(res))
   }, [bookQuestions])
 
   return (
