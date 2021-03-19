@@ -1,9 +1,13 @@
 import React, { useContext, useState, useEffect } from "react"
 import { QuestionsContext } from "../Questions/QuestionProvider"
+import { useParams, useHistory } from "react-router-dom"
 
 export const Question = ({ question }) => {
-  const { destroyQuestion, editQuestion } = useContext(QuestionsContext)
+  const { destroyQuestion, editQuestion, getQuestionsByBook } = useContext(QuestionsContext)
   const [edit, setEdit] = useState(false)
+  const bookId = parseInt(useParams().bookId)
+  const history = useHistory()
+  const [destroyed, setDestroyed] = useState("")
   const [editedQuestion, setEditedQuestion] = useState({
     id: "",
     bookId: "",
@@ -26,13 +30,17 @@ export const Question = ({ question }) => {
     })
   }, [])
 
+  useEffect(() => {
+    getQuestionsByBook(bookId)
+  }, [edit])
+
   return !edit ? (
     <>
       <p>Question: {question.question}</p>
       <p>Page: {question.page}</p>
       <button
         onClick={() => {
-          destroyQuestion(question.id)
+          destroyQuestion(question.id, bookId).then(() => setDestroyed(bookId))
         }}
       >
         Delete
@@ -66,14 +74,16 @@ export const Question = ({ question }) => {
             <input
               type="button"
               value="Edit"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 editQuestion({
                   id: editedQuestion.id,
                   bookId: editedQuestion.bookId,
                   question: editedQuestion.question,
                   page: editedQuestion.page,
+                }).then(() => {
+                  setEdit(false)
                 })
-                setEdit(false)
               }}
             />
           </div>

@@ -6,7 +6,6 @@ export const QuestionsContext = React.createContext()
 export const QuesitonsProvider = (props) => {
   const [questions, setQuestions] = useState([])
   const [question, setQuestion] = useState({})
-  const history = useHistory()
 
   const getQuestions = () => {
     return fetch("http://localhost:8000/questions", {
@@ -35,7 +34,9 @@ export const QuesitonsProvider = (props) => {
         "Authorization": `Token ${localStorage.getItem("active_user")}`,
         "Content-Type": "application/json",
       },
-    }).then((response) => response.json())
+    })
+      .then((response) => response.json())
+      .then((res) => setQuestions(res))
   }
 
   const createQuestion = (questionObj) => {
@@ -46,9 +47,7 @@ export const QuesitonsProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(questionObj),
-    })
-      .then((res) => res.json())
-      .then((res) => getQuestionsByBook(questionObj.bookId))
+    }).then(() => getQuestionsByBook(questionObj.bookId))
   }
 
   const editQuestion = (questionObj) => {
@@ -59,16 +58,16 @@ export const QuesitonsProvider = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(questionObj),
-    }).then(getQuestions)
+    }).then(() => getQuestionsByBook(questionObj.bookId))
   }
 
-  const destroyQuestion = (id) => {
+  const destroyQuestion = (id, bookId) => {
     return fetch(`http://localhost:8000/questions/${id}`, {
       method: "DELETE",
       headers: {
         "Authorization": `Token ${localStorage.getItem("active_user")}`,
       },
-    }).then(getQuestions)
+    })
   }
 
   return (

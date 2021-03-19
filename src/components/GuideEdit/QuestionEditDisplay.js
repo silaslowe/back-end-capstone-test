@@ -9,7 +9,7 @@ export const QuestionEditDisplay = (props) => {
   const bookId = parseInt(useParams().bookId)
 
   useEffect(() => {
-    getQuestionsByBook(bookId).then((res) => setQuestions(res))
+    getQuestionsByBook(bookId)
   }, [])
 
   console.log("ID", bookId)

@@ -12,16 +12,15 @@ export const QuestionCreateForm = (props) => {
   console.log(bookId)
 
   useEffect(() => {
-    getQuestionsByBook(bookId).then((res) => setQuestions(res))
+    getQuestionsByBook(bookId)
   }, [])
 
   useEffect(() => {
-    getQuestionsByBook(bookId).then((res) => setQuestions(res))
+    getQuestionsByBook(bookId)
   }, [bookQuestions])
 
   return (
     <form className="question-form">
-      <h2 className="question-form__title">Edit Book</h2>
       <fieldset>
         <div className="form-group">
           <label htmlFor="question">Question: </label>
@@ -37,8 +36,7 @@ export const QuestionCreateForm = (props) => {
                 question: question.current.value,
                 page: page.current.value,
               }).then((q) => {
-                console.log(q)
-                setQuestions(q)
+                // setQuestions(q)
                 setBookQuestions(q)
               })
             }}
