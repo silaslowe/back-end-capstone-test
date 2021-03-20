@@ -5,7 +5,9 @@ import { QuestionsContext } from "../Questions/QuestionProvider"
 import { ProfileBookDisplay } from "./ProfileBookDisplay"
 
 export const ProfileSearch = (props) => {
-  const { getBooksBySkill, getBooksByTopic, books, setBooks } = useContext(BooksContext)
+  const { getBooksBySkill, getBooksByTopic, getBooksByTitle, books, setBooks } = useContext(
+    BooksContext
+  )
   const { setQuestions } = useContext(QuestionsContext)
   const { register, handleSubmit } = useForm()
   const [search, setSearch] = useState({})
@@ -23,21 +25,34 @@ export const ProfileSearch = (props) => {
   //   }
 
   const topicSearch = (search) => {
-    const searchTopic = search.topic.toLowerCase()
-    if (searchTopic) {
+    if (!isEmpty(search)) {
+      const searchTopic = search.topic.toLowerCase()
       getBooksByTopic(searchTopic)
     } else {
-      alert("No Matching Books")
+      alert("Please Fill Out Search")
     }
   }
 
   const skillSearch = (search) => {
-    const searchSkill = search.skill.toLowerCase()
-    if (searchSkill) {
+    if (!isEmpty(search)) {
+      const searchSkill = search.skill.toLowerCase()
       getBooksBySkill(searchSkill)
     } else {
-      alert("No Matching Books")
+      alert("Please Fill Out Search")
     }
+  }
+
+  const titleSearch = (search) => {
+    if (!isEmpty(search)) {
+      const searchTitle = search.title.toLowerCase()
+      getBooksByTitle(searchTitle)
+    } else {
+      alert("Please Fill Out Search")
+    }
+  }
+
+  const isEmpty = (search) => {
+    return Object.keys(search).length === 0
   }
 
   const handleControlledInputChange = (event) => {
@@ -45,7 +60,7 @@ export const ProfileSearch = (props) => {
     newSearch[event.target.name] = event.target.value // Modify copy
     setSearch(newSearch) // Set copy as new state
   }
-  // console.log("search", search)
+  console.log("search", search)
   console.log("BOOKS", books)
 
   return (
@@ -70,6 +85,16 @@ export const ProfileSearch = (props) => {
           onClick={() => {
             setBooks([])
             topicSearch(search)
+          }}
+        />
+        <label>Seach By Title</label>
+        <input type="text" name="title" ref={register} />
+        <input
+          type="reset"
+          value="Submit"
+          onClick={() => {
+            setBooks([])
+            titleSearch(search)
           }}
         />
       </form>
