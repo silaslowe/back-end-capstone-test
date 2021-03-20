@@ -23,20 +23,24 @@ export const ProfileSearch = (props) => {
   //   }
 
   const topicSearch = (search) => {
-    const searchTopic = search.topic.toLowerCase()
-    if (searchTopic) {
+    if (!isEmpty(search)) {
+      const searchTopic = search.topic.toLowerCase()
       getBooksByTopic(searchTopic)
     } else {
-      alert("No Matching Books")
+      alert("Please Fill Out Search")
     }
   }
 
+  const isEmpty = (search) => {
+    return Object.keys(search).length === 0
+  }
+
   const skillSearch = (search) => {
-    const searchSkill = search.skill.toLowerCase()
-    if (searchSkill) {
+    if (!isEmpty(search)) {
+      const searchSkill = search.skill.toLowerCase()
       getBooksBySkill(searchSkill)
     } else {
-      alert("No Matching Books")
+      alert("Please Fill Out Search")
     }
   }
 
@@ -45,7 +49,7 @@ export const ProfileSearch = (props) => {
     newSearch[event.target.name] = event.target.value // Modify copy
     setSearch(newSearch) // Set copy as new state
   }
-  // console.log("search", search)
+  console.log("search", search)
   console.log("BOOKS", books)
 
   return (
