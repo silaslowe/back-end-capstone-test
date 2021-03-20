@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom"
 import { VocabContext } from "../Vocab/VocabProvider"
 
 export const Vocab = ({ vocab }) => {
-  console.log(vocab)
   const { editVocab, destroyVocabRel } = useContext(VocabContext)
   const bookId = parseInt(useParams().bookId)
   const [edit, setEdit] = useState(false)
@@ -30,7 +29,6 @@ export const Vocab = ({ vocab }) => {
       definition: vocab.definition,
     })
   }, [])
-  console.log("Edited Vocab", editedVocab)
   return !edit ? (
     <>
       <p>Word: {vocab.word}</p>

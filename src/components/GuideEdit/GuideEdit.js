@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react"
-import { BooksContext } from "../Books/BooksProvider"
 import { useHistory, useParams } from "react-router-dom"
+import { BooksContext } from "../Books/BooksProvider"
+import { SkillsContext } from "../Skills/SkillsProvider"
 import { NavBar } from "../Nav/Nav"
-// import { BookEdit } from "./BookEdit"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
 import { SkillsEdit } from "./SkillsEdit"
 import { TopicsEdit } from "./TopicsEdit"
@@ -10,40 +10,56 @@ import { VocabEditDisplay } from "./VocabEditDisplay"
 
 export const GuideEdit = (props) => {
   const history = useHistory()
-  const bookId = useParams().bookId
+  const bookId = parseInt(useParams().bookId)
   const { book, getSingleBook, editBook } = useContext(BooksContext)
+  const { skills } = useContext(SkillsContext)
   const [editedBook, setEditedBook] = useState({
-    id: book.id,
-    title: "",
-    author: "",
-    notes: "",
-    rating: 0,
-    location: "",
-    synopsis: "",
+    // id: book.id,
+    // title: "",
+    // author: "",
+    // notes: "",
+    // rating: 0,
+    // location: "",
+    // synopsis: "",
   })
 
   useEffect(() => {
-    getSingleBook(parseInt(props.match.params.bookId))
-    setEditedBook({
-      title: book.title,
-      author: book.author,
-      notes: book.notes,
-      rating: book.rating,
-      location: book.location,
-      synopsis: book.synopsis,
-    })
+    getSingleBook(parseInt(props.match.params.bookId)).then(() =>
+      setEditedBook({
+        title: book.title,
+        author: book.author,
+        notes: book.notes,
+        rating: book.rating,
+        location: book.location,
+        synopsis: book.synopsis,
+      })
+    )
   }, [])
+
+  useEffect(() => {
+    getSingleBook(parseInt(props.match.params.bookId)).then(() =>
+      setEditedBook({
+        title: book.title,
+        author: book.author,
+        notes: book.notes,
+        rating: book.rating,
+        location: book.location,
+        synopsis: book.synopsis,
+      })
+    )
+  }, [skills])
 
   const changeBookState = (domEvent) => {
     const newBookState = Object.assign({}, editedBook)
     newBookState[domEvent.target.name] = domEvent.target.value
     setEditedBook(newBookState)
   }
+
+  console.log("BOOK EDIT", editedBook)
+
   return (
     <>
       <NavBar />
-      {/* <BookEdit {...props} /> */}
-
       <>
         <form className="book-form">
           <img src={book.cover_url} alt={`${book.title} cover art`} />

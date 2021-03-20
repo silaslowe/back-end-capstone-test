@@ -12,8 +12,6 @@ export const QuestionEditDisplay = (props) => {
     getQuestionsByBook(bookId)
   }, [])
 
-  console.log("ID", bookId)
-  console.log("QUESTIONS", questions)
   return (
     <>
       <h2>Questions</h2>

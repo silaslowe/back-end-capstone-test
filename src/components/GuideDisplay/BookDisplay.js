@@ -1,11 +1,16 @@
 import React, { useState, useContext, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { BooksContext } from "../Books/BooksProvider"
 
 export const BookDisplay = (props) => {
-  const { setBooks, books } = useContext(BooksContext)
-  const book = props.book
+  const { setBooks, books, getSingleBook, book } = useContext(BooksContext)
+  const bookId = parseInt(useParams().bookId)
   const history = useHistory()
+
+  useEffect(() => {
+    getSingleBook(bookId)
+  }, [])
+
   return (
     <>
       <button

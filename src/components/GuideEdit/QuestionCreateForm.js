@@ -9,8 +9,6 @@ export const QuestionCreateForm = (props) => {
   const question = useRef()
   const page = useRef()
 
-  console.log(bookId)
-
   useEffect(() => {
     getQuestionsByBook(bookId)
   }, [])
