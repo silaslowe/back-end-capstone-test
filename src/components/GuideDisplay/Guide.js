@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react"
-import { NavBar } from "../Nav/Nav"
+import { Navigation } from "../Nav/Nav"
 import { BooksContext } from "../Books/BooksProvider"
 import { BookDisplay } from "./BookDisplay"
 
@@ -15,7 +15,7 @@ export const Guide = (props) => {
 
   return (
     <>
-      <NavBar />
+      <Navigation />
       <BookDisplay {...props} book={book} />
     </>
   )

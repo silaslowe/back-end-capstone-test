@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { BooksContext } from "../Books/BooksProvider"
-import { NavBar } from "../Nav/Nav"
+import { Navigation } from "../Nav/Nav"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
 import { SkillsEdit } from "./SkillsEdit"
 import { TopicsEdit } from "./TopicsEdit"
@@ -57,7 +57,7 @@ export const GuideEdit = (props) => {
 
   return (
     <>
-      <NavBar />
+      <Navigation />
       <>
         <form className="book-form">
           <img src={book.cover_url} alt={`${book.title} cover art`} />

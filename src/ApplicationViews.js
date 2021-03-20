@@ -1,7 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { Home } from "./Home"
-import { OpenLibrarySearch } from "./components/OpenLibrary/OpenLibarySearch"
+import { Home } from "./components/Home"
 import { OpenLibrary } from "./components/OpenLibrary/OpenLibrary"
 import { OpenLibraryProvider } from "./components/OpenLibrary/OpenLibraryProvider"
 import { ProfileProvider } from "./components/Profile/ProfileProvider"
