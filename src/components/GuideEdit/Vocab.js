@@ -6,6 +6,9 @@ export const Vocab = ({ vocab }) => {
   const { editVocab, destroyVocabRel } = useContext(VocabContext)
   const bookId = parseInt(useParams().bookId)
   const [edit, setEdit] = useState(false)
+
+  // Empty copy of question state
+
   const [editedVocab, setEditedVocab] = useState({
     id: "",
     word: "",
@@ -14,11 +17,7 @@ export const Vocab = ({ vocab }) => {
     notes: "",
   })
 
-  const changeVocabState = (domEvent) => {
-    const newVocabState = Object.assign({}, editedVocab)
-    newVocabState[domEvent.target.name] = domEvent.target.value
-    setEditedVocab(newVocabState)
-  }
+  // Sets copy to vocab state
 
   useEffect(() => {
     setEditedVocab({
@@ -29,6 +28,15 @@ export const Vocab = ({ vocab }) => {
       definition: vocab.definition,
     })
   }, [])
+
+  // Changes the state for the edited vocab when the form changes by using the newVocabState variable. newVocabState uses the targeted form element and captures its value and then sets the property in edited book to that value.
+
+  const changeVocabState = (domEvent) => {
+    const newVocabState = Object.assign({}, editedVocab)
+    newVocabState[domEvent.target.name] = domEvent.target.value
+    setEditedVocab(newVocabState)
+  }
+
   return !edit ? (
     <>
       <p>Word: {vocab.word}</p>

@@ -9,9 +9,13 @@ export const QuestionCreateForm = (props) => {
   const question = useRef()
   const page = useRef()
 
+  // Gets questions on render
+
   useEffect(() => {
     getQuestionsByBook(bookId)
   }, [])
+
+  // Gets questions when the bookQuestion state changes after the create call
 
   useEffect(() => {
     getQuestionsByBook(bookId)
@@ -34,7 +38,6 @@ export const QuestionCreateForm = (props) => {
                 question: question.current.value,
                 page: page.current.value,
               }).then((q) => {
-                // setQuestions(q)
                 setBookQuestions(q)
               })
             }}

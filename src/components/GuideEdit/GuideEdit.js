@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { BooksContext } from "../Books/BooksProvider"
-import { SkillsContext } from "../Skills/SkillsProvider"
 import { NavBar } from "../Nav/Nav"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
 import { SkillsEdit } from "./SkillsEdit"
@@ -10,18 +9,15 @@ import { VocabEditDisplay } from "./VocabEditDisplay"
 
 export const GuideEdit = (props) => {
   const history = useHistory()
+  // Gets id of selected book from props
   const bookId = parseInt(useParams().bookId)
   const { book, getSingleBook, editBook } = useContext(BooksContext)
-  const { skills } = useContext(SkillsContext)
-  const [editedBook, setEditedBook] = useState({
-    // id: book.id,
-    // title: "",
-    // author: "",
-    // notes: "",
-    // rating: 0,
-    // location: "",
-    // synopsis: "",
-  })
+
+  // Variable to store edited book properties
+
+  const [editedBook, setEditedBook] = useState({})
+
+  // Sets copy of book for use in the form on page render
 
   useEffect(() => {
     getSingleBook(parseInt(props.match.params.bookId)).then(() =>
@@ -36,18 +32,20 @@ export const GuideEdit = (props) => {
     )
   }, [])
 
-  useEffect(() => {
-    getSingleBook(parseInt(props.match.params.bookId)).then(() =>
-      setEditedBook({
-        title: book.title,
-        author: book.author,
-        notes: book.notes,
-        rating: book.rating,
-        location: book.location,
-        synopsis: book.synopsis,
-      })
-    )
-  }, [skills])
+  // useEffect(() => {
+  //   getSingleBook(parseInt(props.match.params.bookId)).then(() =>
+  //     setEditedBook({
+  //       title: book.title,
+  //       author: book.author,
+  //       notes: book.notes,
+  //       rating: book.rating,
+  //       location: book.location,
+  //       synopsis: book.synopsis,
+  //     })
+  //   )
+  // }, [skills])
+
+  // changes the state for the edited book when the form changes by using the new book variable. newBookState uses the targeted form element and captures its value and then sets the property in edited book to that value.
 
   const changeBookState = (domEvent) => {
     const newBookState = Object.assign({}, editedBook)

@@ -8,15 +8,23 @@ export const SkillsEdit = (props) => {
   )
   const skill = useRef()
   const bookId = parseInt(useParams().bookId)
+
+  // Causes render on state cahnge after skill relationship is destroyed
+
   const [bookskills, setBookSkills] = useState([])
+
+  // Gets skills related to the book on iniitial render
 
   useEffect(() => {
     getSkillsByBook(bookId).then((res) => setSkills(res))
   }, [])
 
+  // Gets skills related to the book on bookSkills state change
+
   useEffect(() => {
     getSkillsByBook(bookId).then(setSkills)
   }, [bookskills])
+
   return (
     <>
       <h1>Skills</h1>

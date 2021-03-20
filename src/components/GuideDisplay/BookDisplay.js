@@ -4,9 +4,11 @@ import { BooksContext } from "../Books/BooksProvider"
 
 export const BookDisplay = (props) => {
   const { setBooks, books, getSingleBook, book } = useContext(BooksContext)
+  // Gets id of selected book from props
   const bookId = parseInt(useParams().bookId)
-  const history = useHistory()
 
+  const history = useHistory()
+  // Gets currently selected book
   useEffect(() => {
     getSingleBook(bookId)
   }, [])
@@ -15,7 +17,9 @@ export const BookDisplay = (props) => {
     <>
       <button
         onClick={() => {
+          // Clears book state
           setBooks([])
+          // Navigate to edit form for selected book
           history.push({ pathname: `/guide-edit/${book.id}`, state: { book } })
         }}
       >
