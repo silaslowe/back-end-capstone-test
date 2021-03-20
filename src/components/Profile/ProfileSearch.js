@@ -5,7 +5,9 @@ import { QuestionsContext } from "../Questions/QuestionProvider"
 import { ProfileBookDisplay } from "./ProfileBookDisplay"
 
 export const ProfileSearch = (props) => {
-  const { getBooksBySkill, getBooksByTopic, books, setBooks } = useContext(BooksContext)
+  const { getBooksBySkill, getBooksByTopic, getBooksByTitle, books, setBooks } = useContext(
+    BooksContext
+  )
   const { setQuestions } = useContext(QuestionsContext)
   const { register, handleSubmit } = useForm()
   const [search, setSearch] = useState({})
@@ -31,10 +33,6 @@ export const ProfileSearch = (props) => {
     }
   }
 
-  const isEmpty = (search) => {
-    return Object.keys(search).length === 0
-  }
-
   const skillSearch = (search) => {
     if (!isEmpty(search)) {
       const searchSkill = search.skill.toLowerCase()
@@ -42,6 +40,19 @@ export const ProfileSearch = (props) => {
     } else {
       alert("Please Fill Out Search")
     }
+  }
+
+  const titleSearch = (search) => {
+    if (!isEmpty(search)) {
+      const searchTitle = search.title.toLowerCase()
+      getBooksByTitle(searchTitle)
+    } else {
+      alert("Please Fill Out Search")
+    }
+  }
+
+  const isEmpty = (search) => {
+    return Object.keys(search).length === 0
   }
 
   const handleControlledInputChange = (event) => {
@@ -74,6 +85,16 @@ export const ProfileSearch = (props) => {
           onClick={() => {
             setBooks([])
             topicSearch(search)
+          }}
+        />
+        <label>Seach By Title</label>
+        <input type="text" name="title" ref={register} />
+        <input
+          type="reset"
+          value="Submit"
+          onClick={() => {
+            setBooks([])
+            titleSearch(search)
           }}
         />
       </form>
