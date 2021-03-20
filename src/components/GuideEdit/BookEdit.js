@@ -3,7 +3,9 @@ import { BooksContext } from "../Books/BooksProvider"
 
 export const BookEdit = (props) => {
   console.log(props)
+
   const { book, getSingleBook, editBook } = useContext(BooksContext)
+
   const [editedBook, setEditedBook] = useState({
     id: book.id,
     title: "",
@@ -31,6 +33,12 @@ export const BookEdit = (props) => {
     newBookState[domEvent.target.name] = domEvent.target.value
     setEditedBook(newBookState)
   }
+
+  console.log("BOOK EDIT", editedBook)
+
+  // useEffect(() => {
+  //   getSingleBook()
+  // }, [])
 
   return (
     <>

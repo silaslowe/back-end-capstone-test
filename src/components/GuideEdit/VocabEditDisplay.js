@@ -20,10 +20,6 @@ export const VocabEditDisplay = (props) => {
     getVocabByBook(bookId).then(() => setBookVocabs)
   }, [bookVocabs])
 
-  useEffect(() => {}, [])
-
-  // console.log("Vocabs", vocabs)
-  // console.log(bookId)
   return (
     <>
       <h2>Vocabulary Words</h2>

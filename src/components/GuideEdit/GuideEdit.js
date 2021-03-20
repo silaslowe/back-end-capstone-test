@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
-import { BooksContext } from "../Books/BooksProvider"
 import { useHistory, useParams } from "react-router-dom"
+import { BooksContext } from "../Books/BooksProvider"
 import { NavBar } from "../Nav/Nav"
-// import { BookEdit } from "./BookEdit"
 import { QuestionEditDisplay } from "./QuestionEditDisplay"
 import { SkillsEdit } from "./SkillsEdit"
 import { TopicsEdit } from "./TopicsEdit"
@@ -10,40 +9,55 @@ import { VocabEditDisplay } from "./VocabEditDisplay"
 
 export const GuideEdit = (props) => {
   const history = useHistory()
-  const bookId = useParams().bookId
+  // Gets id of selected book from props
+  const bookId = parseInt(useParams().bookId)
   const { book, getSingleBook, editBook } = useContext(BooksContext)
-  const [editedBook, setEditedBook] = useState({
-    id: book.id,
-    title: "",
-    author: "",
-    notes: "",
-    rating: 0,
-    location: "",
-    synopsis: "",
-  })
+
+  // Variable to store edited book properties
+
+  const [editedBook, setEditedBook] = useState({})
+
+  // Sets copy of book for use in the form on page render
 
   useEffect(() => {
-    getSingleBook(parseInt(props.match.params.bookId))
-    setEditedBook({
-      title: book.title,
-      author: book.author,
-      notes: book.notes,
-      rating: book.rating,
-      location: book.location,
-      synopsis: book.synopsis,
-    })
+    getSingleBook(parseInt(props.match.params.bookId)).then(() =>
+      setEditedBook({
+        title: book.title,
+        author: book.author,
+        notes: book.notes,
+        rating: book.rating,
+        location: book.location,
+        synopsis: book.synopsis,
+      })
+    )
   }, [])
+
+  // useEffect(() => {
+  //   getSingleBook(parseInt(props.match.params.bookId)).then(() =>
+  //     setEditedBook({
+  //       title: book.title,
+  //       author: book.author,
+  //       notes: book.notes,
+  //       rating: book.rating,
+  //       location: book.location,
+  //       synopsis: book.synopsis,
+  //     })
+  //   )
+  // }, [skills])
+
+  // changes the state for the edited book when the form changes by using the new book variable. newBookState uses the targeted form element and captures its value and then sets the property in edited book to that value.
 
   const changeBookState = (domEvent) => {
     const newBookState = Object.assign({}, editedBook)
     newBookState[domEvent.target.name] = domEvent.target.value
     setEditedBook(newBookState)
   }
+
+  console.log("BOOK EDIT", editedBook)
+
   return (
     <>
       <NavBar />
-      {/* <BookEdit {...props} /> */}
-
       <>
         <form className="book-form">
           <img src={book.cover_url} alt={`${book.title} cover art`} />

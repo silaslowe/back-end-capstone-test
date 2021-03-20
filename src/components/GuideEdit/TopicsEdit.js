@@ -8,11 +8,18 @@ export const TopicsEdit = (props) => {
   )
   const topic = useRef()
   const bookId = parseInt(useParams().bookId)
+
+  // Causes render on state cahnge after skill relationship is destroyed
+
   const [booktopics, setBookTopics] = useState([])
+
+  // Gets skills related to the book on iniitial render
 
   useEffect(() => {
     getTopicsByBook(bookId).then((res) => setTopics(res))
   }, [])
+
+  // Gets skills related to the book on bookSkills state change
 
   useEffect(() => {
     getTopicsByBook(bookId).then(setTopics)
