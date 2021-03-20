@@ -4,7 +4,7 @@ import { ProfileContext } from "./ProfileProvider.js"
 import { BooksContext } from "../Books/BooksProvider.js"
 import { Navigation } from "../Nav/Nav"
 import { ProfileSearch } from "./ProfileSearch.js"
-import { SearchProfileBooks } from "./SearchProfileBooks.js"
+import Card from "react-bootstrap/Card"
 
 export const CurrentProfile = (props) => {
   const { profile, getCurrentProfile } = useContext(ProfileContext)
@@ -23,16 +23,28 @@ export const CurrentProfile = (props) => {
   return (
     <>
       <Navigation {...props} />
-      <h1>Current Profile</h1>
-      <div className="profile-container">
-        <h3>
-          Name: {profile.user.first_name} {profile.user.last_name}
-        </h3>
-        <p>Email: {profile.user.username}</p>
-        <p>Role: {profile.role}</p>
-        <p>Bio: {profile.bio}</p>
-      </div>
+      <Card className="text-center">
+        <Card.Header>Current Profile</Card.Header>
+        <Card.Body>
+          <Card.Title>
+            Name: {profile.user.first_name} {profile.user.last_name}
+          </Card.Title>
+          <Card.Text>Email: {profile.user.username}</Card.Text>
+          <Card.Text>Role: {profile.role}</Card.Text>
+          <Card.Text> Bio: {profile.bio}</Card.Text>
+        </Card.Body>
+      </Card>
       <ProfileSearch {...props} />
     </>
   )
+}
+
+{
+  /* <Form>
+<Form.Group controlId="formBasicEmail">
+  <Form.Label>Email address</Form.Label>
+  <Form.Control type="email" placeholder="Enter email" />
+  <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+</Form.Group>
+</Form> */
 }
