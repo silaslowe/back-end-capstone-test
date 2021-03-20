@@ -6,6 +6,8 @@ import { ProfileBookDisplay } from "./ProfileBookDisplay"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Container from "react-bootstrap/Container"
+import CardGroup from "react-bootstrap/CardGroup"
+import Row from "react-bootstrap/Row"
 
 export const ProfileSearch = (props) => {
   const { getBooksBySkill, getBooksByTopic, getBooksByTitle, books, setBooks } = useContext(
@@ -69,72 +71,76 @@ export const ProfileSearch = (props) => {
   return (
     <>
       <Container>
-        <Form onChange={handleControlledInputChange}>
-          <Form.Group controlId="skill">
-            <Form.Label>Book By Skill</Form.Label>
-            <Form.Control ref={register} type="skill" placeholder="Enter Skill" name="skill" />
-            <Form.Text className="text-muted">
-              Please enter an academic skill("Letter Identification", "SEL", etc.){" "}
-            </Form.Text>
-          </Form.Group>
-          <Button
-            variant="secondary"
-            type="reset"
-            onClick={() => {
-              setBooks([])
-              skillSearch(search)
-            }}
-          >
-            Submit
-          </Button>
-        </Form>
+        <Container>
+          <Form onChange={handleControlledInputChange} style={{ margin: "3rem 0 0 0" }}>
+            <Form.Group controlId="skill">
+              <Form.Label>Book By Skill</Form.Label>
+              <Form.Control ref={register} type="skill" placeholder="Enter Skill" name="skill" />
+              <Form.Text className="text-muted">
+                Please enter an academic skill("Letter Identification", "SEL", etc.){" "}
+              </Form.Text>
+            </Form.Group>
+            <Button
+              variant="secondary"
+              type="reset"
+              onClick={() => {
+                setBooks([])
+                skillSearch(search)
+              }}
+            >
+              Submit
+            </Button>
+          </Form>
 
-        <Form onChange={handleControlledInputChange}>
-          <Form.Group controlId="topic">
-            <Form.Label>Book By Topic</Form.Label>
-            <Form.Control ref={register} type="skill" placeholder="Enter Topic" name="topic" />
-            <Form.Text className="text-muted">
-              Please enter an academic skill("Animals", "Construction", etc.){" "}
-            </Form.Text>
-          </Form.Group>
-          <Button
-            variant="secondary"
-            type="reset"
-            onClick={() => {
-              setBooks([])
-              topicSearch(search)
-            }}
-          >
-            Submit
-          </Button>
-        </Form>
+          <Form onChange={handleControlledInputChange}>
+            <Form.Group controlId="topic">
+              <Form.Label>Book By Topic</Form.Label>
+              <Form.Control ref={register} type="skill" placeholder="Enter Topic" name="topic" />
+              <Form.Text className="text-muted">
+                Please enter an academic skill("Animals", "Construction", etc.){" "}
+              </Form.Text>
+            </Form.Group>
+            <Button
+              variant="secondary"
+              type="reset"
+              onClick={() => {
+                setBooks([])
+                topicSearch(search)
+              }}
+            >
+              Submit
+            </Button>
+          </Form>
 
-        <Form onChange={handleControlledInputChange}>
-          <Form.Group controlId="title">
-            <Form.Label>Book By Title</Form.Label>
-            <Form.Control ref={register} type="skill" placeholder="Enter Title" name="title" />
-            <Form.Text className="text-muted">
-              Please enter a book title(The Three Little Pigs", etc.){" "}
-            </Form.Text>
-          </Form.Group>
-          <Button
-            variant="secondary"
-            type="reset"
-            onClick={() => {
-              setBooks([])
-              titleSearch(search)
-            }}
-          >
-            Submit
-          </Button>
-        </Form>
+          <Form onChange={handleControlledInputChange} style={{ margin: " 0 0 3rem 0" }}>
+            <Form.Group controlId="title">
+              <Form.Label>Book By Title</Form.Label>
+              <Form.Control ref={register} type="skill" placeholder="Enter Title" name="title" />
+              <Form.Text className="text-muted">
+                Please enter a book title(The Three Little Pigs", etc.){" "}
+              </Form.Text>
+            </Form.Group>
+            <Button
+              variant="secondary"
+              type="reset"
+              onClick={() => {
+                setBooks([])
+                titleSearch(search)
+              }}
+            >
+              Submit
+            </Button>
+          </Form>
+        </Container>
+
+        <Container fluid>
+          <Row className="align-self-center">
+            {books.map((book) => (
+              <ProfileBookDisplay key={book.id} {...props} book={book} />
+            ))}
+          </Row>
+        </Container>
       </Container>
-
-      <div className="profile-books">
-        {books.map((book) => (
-          <ProfileBookDisplay key={book.id} {...props} book={book} />
-        ))}
-      </div>
     </>
   )
 }
