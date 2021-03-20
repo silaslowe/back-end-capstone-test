@@ -22,13 +22,31 @@ export const ProfileSearch = (props) => {
   //     getBooksBySkill(search)
   //   }
 
+  const topicSearch = (search) => {
+    const searchTopic = search.topic.toLowerCase()
+    if (searchTopic) {
+      getBooksByTopic(searchTopic)
+    } else {
+      alert("No Matching Books")
+    }
+  }
+
+  const skillSearch = (search) => {
+    const searchSkill = search.skill.toLowerCase()
+    if (searchSkill) {
+      getBooksBySkill(searchSkill)
+    } else {
+      alert("No Matching Books")
+    }
+  }
+
   const handleControlledInputChange = (event) => {
     const newSearch = Object.assign({}, register) // Create copy
     newSearch[event.target.name] = event.target.value // Modify copy
     setSearch(newSearch) // Set copy as new state
   }
   // console.log("search", search)
-  // console.log("BOOKS", books)
+  console.log("BOOKS", books)
 
   return (
     <>
@@ -40,7 +58,8 @@ export const ProfileSearch = (props) => {
           type="reset"
           value="Submit"
           onClick={() => {
-            getBooksBySkill(search.skill.toLowerCase())
+            setBooks([])
+            skillSearch(search)
           }}
         />
         <label>Seach By Topic</label>
@@ -49,7 +68,8 @@ export const ProfileSearch = (props) => {
           type="reset"
           value="Submit"
           onClick={() => {
-            getBooksByTopic(search.topic.toLowerCase())
+            setBooks([])
+            topicSearch(search)
           }}
         />
       </form>

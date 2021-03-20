@@ -72,7 +72,13 @@ export const BooksProvider = (props) => {
       },
     })
       .then((response) => response.json())
-      .then(setBooks)
+      .then((res) => {
+        if (!res) {
+          alert("No Matching Books")
+        } else {
+          setBooks(res)
+        }
+      })
   }
 
   const getBooksByTopic = (search) => {
