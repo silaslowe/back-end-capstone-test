@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider.js"
 import { BooksContext } from "../Books/BooksProvider.js"
-import { NavBar } from "../Nav/Nav"
+import { Navigation } from "../Nav/Nav"
 import { ProfileSearch } from "./ProfileSearch.js"
 import { SearchProfileBooks } from "./SearchProfileBooks.js"
 
@@ -22,7 +22,7 @@ export const CurrentProfile = (props) => {
 
   return (
     <>
-      <NavBar {...props} />
+      <Navigation {...props} />
       <h1>Current Profile</h1>
       <div className="profile-container">
         <h3>
