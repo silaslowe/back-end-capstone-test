@@ -31,6 +31,7 @@ export const TopicsEdit = (props) => {
   useEffect(() => {
     getTopicsByBook(bookId).then(setTopics)
   }, [booktopics])
+
   return (
     <>
       <h3>Topics</h3>

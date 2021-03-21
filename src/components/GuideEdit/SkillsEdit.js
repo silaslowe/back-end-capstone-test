@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useContext, useRef } from "react"
 import { SkillsContext } from "../Skills/SkillsProvider"
 import { useParams } from "react-router-dom"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
 
 export const SkillsEdit = (props) => {
   const { skills, getSkillsByBook, destroySkillRel, setSkills, createSkill } = useContext(
@@ -27,44 +31,68 @@ export const SkillsEdit = (props) => {
 
   return (
     <>
-      <h1>Skills</h1>
-      <form className="skill-form">
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="question"></label>
-            <input type="text" name="skill" required ref={skill} />
-            <input
-              type="reset"
-              value="Add Academic Skill"
-              onClick={() => {
-                createSkill({
-                  bookId: bookId,
-                  skill: skill.current.value.toLowerCase(),
-                }).then((s) => {
-                  setSkills(s)
-                  setBookSkills(s)
-                })
+      <h3>Skills</h3>
+      <Form className="skill-form">
+        <Form.Label htmlFor="skill-edit">Add Skill</Form.Label>
+        <Form.Control type="text" name="skill" required ref={skill} />
+        <Button
+          type="reset"
+          variant="secondary"
+          onClick={() => {
+            createSkill({
+              bookId: bookId,
+              skill: skill.current.value.toLowerCase(),
+            }).then((s) => {
+              setSkills(s)
+              setBookSkills(s)
+            })
+          }}
+        >
+          Add
+        </Button>
+      </Form>
+      <Container>
+        <Row>
+          {skills.map((skill) => (
+            <div
+              className="topic"
+              key={skill.id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: ".5rem",
+                backgroundColor: "lightgray",
+                padding: ".25rem",
+                borderRadius: "5px",
               }}
-            />
-          </div>
-        </fieldset>
-      </form>
-
-      {skills.map((skill) => (
-        <div className="skill" key={skill.id}>
-          <p>{skill.skill}</p>
-          <button
-            onClick={() => {
-              destroySkillRel({ bookId: bookId, skillId: skill.id }).then((s) => {
-                setSkills(s)
-                setBookSkills(s)
-              })
-            }}
-          >
-            X
-          </button>
-        </div>
-      ))}
+            >
+              <p
+                style={{
+                  margin: "0",
+                  padding: ".25rem",
+                  textTransform: "capitalize",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {skill.skill}
+              </p>
+              <Button
+                variant="outline-primary"
+                style={{ background: "0px", fontSize: "1.25rem", border: "0px" }}
+                onClick={() => {
+                  destroySkillRel({ bookId: bookId, skillId: skill.id }).then((s) => {
+                    setSkills(s)
+                    setBookSkills(s)
+                  })
+                }}
+              >
+                X
+              </Button>
+            </div>
+          ))}
+        </Row>
+      </Container>
     </>
   )
 }
