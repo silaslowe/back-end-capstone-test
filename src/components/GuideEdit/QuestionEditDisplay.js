@@ -3,6 +3,12 @@ import { QuestionsContext } from "../Questions/QuestionProvider"
 import { Question } from "./Question"
 import { QuestionCreateForm } from "./QuestionCreateForm"
 import { useParams } from "react-router-dom"
+import Container from "react-bootstrap/Container"
+import Form from "react-bootstrap/Form"
+import Image from "react-bootstrap/Image"
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import Row from "react-bootstrap/Row"
 
 export const QuestionEditDisplay = (props) => {
   const { getQuestionsByBook, questions, setQuestions } = useContext(QuestionsContext)
@@ -19,13 +25,15 @@ export const QuestionEditDisplay = (props) => {
 
   return (
     <>
-      <h2>Questions</h2>
+      <h3>Questions</h3>
       <QuestionCreateForm {...props} />
-      <div className="question-container">
-        {questions.map((question) => (
-          <Question key={question.id} props={props} question={question} />
-        ))}
-      </div>
+      <Container>
+        <Row>
+          {questions.map((question) => (
+            <Question key={question.id} props={props} question={question} />
+          ))}
+        </Row>
+      </Container>
     </>
   )
 }

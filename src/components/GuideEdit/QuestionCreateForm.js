@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { useParams } from "react-router-dom"
 import { QuestionsContext } from "../Questions/QuestionProvider"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
 export const QuestionCreateForm = (props) => {
   const { createQuestion, getQuestionsByBook, setQuestions } = useContext(QuestionsContext)
@@ -22,28 +24,27 @@ export const QuestionCreateForm = (props) => {
   }, [bookQuestions])
 
   return (
-    <form className="question-form">
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="question">Question: </label>
-          <input type="text" name="question" required ref={question} />
-          <label htmlFor="question-page">Page Number: </label>
-          <input type="text" name="page" required className="form-control" ref={page} />
-          <input
-            type="reset"
-            value="Add Question"
-            onClick={() => {
-              createQuestion({
-                bookId: bookId,
-                question: question.current.value,
-                page: page.current.value,
-              }).then((q) => {
-                setBookQuestions(q)
-              })
-            }}
-          />
-        </div>
-      </fieldset>
-    </form>
+    <Form className="question-form">
+      <Form.Label htmlFor="question">Question: </Form.Label>
+      <Form.Control type="text" name="question" required ref={question} />
+      <Form.Label htmlFor="question-page">Page Number: </Form.Label>
+      <Form.Control type="text" name="page" required className="form-control" ref={page} />
+      <Button
+        className="form-btn-below"
+        type="reset"
+        variant="secondary"
+        onClick={() => {
+          createQuestion({
+            bookId: bookId,
+            question: question.current.value,
+            page: page.current.value,
+          }).then((q) => {
+            setBookQuestions(q)
+          })
+        }}
+      >
+        Add
+      </Button>
+    </Form>
   )
 }

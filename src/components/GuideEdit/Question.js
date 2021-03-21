@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from "react"
 import { QuestionsContext } from "../Questions/QuestionProvider"
 import { useParams, useHistory } from "react-router-dom"
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import Form from "react-bootstrap/Form"
 
 export const Question = ({ question }) => {
   const { destroyQuestion, editQuestion, getQuestionsByBook } = useContext(QuestionsContext)
@@ -45,59 +48,74 @@ export const Question = ({ question }) => {
 
   return !edit ? (
     <>
-      <p>Question: {question.question}</p>
-      <p>Page: {question.page}</p>
-      <button
-        onClick={() => {
-          destroyQuestion(question.id, bookId)
-        }}
-      >
-        Delete
-      </button>
-      <button onClick={() => setEdit(true)}>Edit</button>
+      <Card style={{ width: "27rem", margin: "1rem" }}>
+        <Card.Body
+          style={{ display: "flex", flexDirection: "column", justifyContent: "space-between " }}
+        >
+          <div>
+            <Card.Title>{question.question}</Card.Title>
+            <Card.Text>Page: {question.page}</Card.Text>
+          </div>
+          <Button
+            className="form-btn-below"
+            style={{ width: "20%" }}
+            variant="secondary"
+            onClick={() => setEdit(true)}
+          >
+            Edit
+          </Button>
+        </Card.Body>
+      </Card>
     </>
   ) : (
     <>
-      <form className="question-form">
-        <h2 className="question-form__title">Edit Book</h2>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="question">Question: </label>
-            <input
-              type="text"
-              name="question"
-              required
-              className="form-control"
-              value={editedQuestion.question}
-              onChange={changeQuestionState}
-            />
-            <label htmlFor="question-page">Page Number: </label>
-            <input
-              type="text"
-              name="page"
-              required
-              className="form-control"
-              value={editedQuestion.page}
-              onChange={changeQuestionState}
-            />
-            <input
-              type="button"
-              value="Edit"
-              onClick={(e) => {
-                e.preventDefault()
-                editQuestion({
-                  id: editedQuestion.id,
-                  bookId: editedQuestion.bookId,
-                  question: editedQuestion.question,
-                  page: editedQuestion.page,
-                }).then(() => {
-                  setEdit(false)
-                })
-              }}
-            />
-          </div>
-        </fieldset>
-      </form>
+      <Form className="question-form">
+        <Form.Label htmlFor="question">Question: </Form.Label>
+        <Form.Control
+          type="text"
+          name="question"
+          required
+          className="form-control"
+          value={editedQuestion.question}
+          onChange={changeQuestionState}
+        />
+        <Form.Label htmlFor="question-page">Page Number: </Form.Label>
+        <Form.Control
+          type="text"
+          name="page"
+          required
+          className="form-control"
+          value={editedQuestion.page}
+          onChange={changeQuestionState}
+        />
+        <Button
+          className="form-btn-below"
+          type="button"
+          variant="secondary"
+          onClick={(e) => {
+            e.preventDefault()
+            editQuestion({
+              id: editedQuestion.id,
+              bookId: editedQuestion.bookId,
+              question: editedQuestion.question,
+              page: editedQuestion.page,
+            }).then(() => {
+              setEdit(false)
+            })
+          }}
+        >
+          Edit
+        </Button>
+        <Button
+          className="form-btn-side"
+          variant="secondary"
+          onClick={() => {
+            destroyQuestion(question.id, bookId)
+          }}
+        >
+          Delete
+        </Button>
+      </Form>
     </>
   )
 }
