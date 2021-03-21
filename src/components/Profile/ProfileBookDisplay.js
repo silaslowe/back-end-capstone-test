@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
-import Media from "react-bootstrap/Media"
 
 export const ProfileBookDisplay = (props) => {
   const history = useHistory()
