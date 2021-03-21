@@ -57,16 +57,18 @@ export const GuideEdit = (props) => {
     setEditedBook(newBookState)
   }
 
-  console.log("BOOK EDIT", editedBook)
-
   return (
     <>
       <Navigation />
-
       <Container>
-        <Form className="book-form">
-          <Container>
-            <Image src={book.cover_url} alt={`${book.title} cover art`} thumbnail />
+        <Container style={{ diplay: "flex", flexDirection: "row" }}>
+          <Image
+            src={book.cover_url}
+            alt={`${book.title} cover art`}
+            style={{ width: "50%" }}
+            thumbnail
+          />
+          <Form className="book-form">
             <Form.Label className="book-form__title">Edit Book</Form.Label>
             <label htmlFor="title">Title: </label>
             <Form.Control
@@ -137,14 +139,15 @@ export const GuideEdit = (props) => {
                 </select>
               </div>
             </fieldset>
-          </Container>
-        </Form>
+          </Form>
+        </Container>
 
         <TopicsEdit {...props} />
         <SkillsEdit {...props} />
         <VocabEditDisplay {...props} />
         <QuestionEditDisplay {...props} />
         <Button
+          className="form-btn-below"
           onClick={(evt) => {
             evt.preventDefault()
 

@@ -49,7 +49,8 @@ export const Vocab = ({ vocab }) => {
           <div>
             <Card.Title>{vocab.word}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Def: {vocab.definition}</Card.Subtitle>
-            <Card.Text>TeachingNotes: {vocab.notes}</Card.Text>
+            <Card.Text>Teaching Notes: {vocab.notes}</Card.Text>
+            <Card.Text>Page: {vocab.page}</Card.Text>
           </div>
           <Button
             className="form-btn-below"
