@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import { VocabContext } from "../Vocab/VocabProvider"
+import Container from "react-bootstrap/Container"
+import Form from "react-bootstrap/Form"
+import Image from "react-bootstrap/Image"
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
 
 export const Vocab = ({ vocab }) => {
   const { editVocab, destroyVocabRel } = useContext(VocabContext)
@@ -39,11 +44,25 @@ export const Vocab = ({ vocab }) => {
 
   return !edit ? (
     <>
-      <p>Word: {vocab.word}</p>
-      <p>Definition: {vocab.definition}</p>
-      <p>Page: {vocab.page}</p>
-      <p>Notes: {vocab.notes}</p>
-      <button onClick={() => setEdit(true)}>Edit</button>
+      <Card style={{ width: "27rem", margin: "1rem" }}>
+        <Card.Body
+          style={{ display: "flex", flexDirection: "column", justifyContent: "space-between " }}
+        >
+          <div>
+            <Card.Title>{vocab.word}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Def: {vocab.definition}</Card.Subtitle>
+            <Card.Text>TeachingNotes: {vocab.notes}</Card.Text>
+          </div>
+          <Button
+            className="form-btn-below"
+            style={{ width: "20%" }}
+            variant="secondary"
+            onClick={() => setEdit(true)}
+          >
+            Edit
+          </Button>
+        </Card.Body>
+      </Card>
     </>
   ) : (
     <>

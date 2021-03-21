@@ -36,23 +36,26 @@ export const TopicsEdit = (props) => {
     <>
       <h3>Topics</h3>
       <Form className="topic-form">
-        <Form.Label htmlFor="topic-edit">Add Topic</Form.Label>
-        <Form.Control type="text" name="topic" required ref={topic} />
-        <Button
-          type="reset"
-          variant="secondary"
-          onClick={() => {
-            createTopic({
-              bookId: bookId,
-              topic: topic.current.value.toLowerCase(),
-            }).then((t) => {
-              setTopics(t)
-              setBookTopics(t)
-            })
-          }}
-        >
-          Add
-        </Button>
+        {/* <Form.Label htmlFor="topic-edit">Add Topic</Form.Label> */}
+        <Container style={{ display: "flex" }}>
+          <Form.Control style={{ width: "80%" }} type="text" name="topic" required ref={topic} />
+          <Button
+            className="form-btn-side"
+            type="reset"
+            variant="secondary"
+            onClick={() => {
+              createTopic({
+                bookId: bookId,
+                topic: topic.current.value.toLowerCase(),
+              }).then((t) => {
+                setTopics(t)
+                setBookTopics(t)
+              })
+            }}
+          >
+            Add
+          </Button>
+        </Container>
       </Form>
       <Container>
         <Row>
