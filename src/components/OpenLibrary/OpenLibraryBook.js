@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
+import Image from "react-bootstrap/Image"
 
 export const OpenLibraryBook = ({ props, book }) => {
   const { createNewGuide } = useContext(BooksContext)

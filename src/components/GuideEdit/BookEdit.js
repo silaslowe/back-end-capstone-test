@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { BooksContext } from "../Books/BooksProvider"
+import Container from "react-bootstrap/Container"
 
 export const BookEdit = (props) => {
   console.log(props)
@@ -36,126 +37,124 @@ export const BookEdit = (props) => {
 
   console.log("BOOK EDIT", editedBook)
 
-  // useEffect(() => {
-  //   getSingleBook()
-  // }, [])
-
   return (
     <>
-      <form className="book-form">
-        <img src={book.cover_url} alt={`${book.title} cover art`} />
-        <h2 className="book-form__title">Edit Book</h2>
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="title">Title: </label>
-            <input
-              type="text"
-              name="title"
-              required
-              className="form-control"
-              value={editedBook.title}
-              onChange={changeBookState}
-            />
-          </div>
-        </fieldset>
+      <Container>
+        <form className="book-form">
+          <img src={book.cover_url} alt={`${book.title} cover art`} />
+          <h2 className="book-form__title">Edit Book</h2>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="title">Title: </label>
+              <input
+                type="text"
+                name="title"
+                required
+                className="form-control"
+                value={editedBook.title}
+                onChange={changeBookState}
+              />
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="author">Author: </label>
-            <input
-              type="text"
-              name="author"
-              required
-              className="form-control"
-              value={editedBook.author}
-              onChange={changeBookState}
-            />
-          </div>
-        </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="author">Author: </label>
+              <input
+                type="text"
+                name="author"
+                required
+                className="form-control"
+                value={editedBook.author}
+                onChange={changeBookState}
+              />
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="notes">Notes: </label>
-            <input
-              type="textarea"
-              name="notes"
-              required
-              className="form-control"
-              value={editedBook.notes}
-              onChange={changeBookState}
-            />
-          </div>
-        </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="notes">Notes: </label>
+              <input
+                type="textarea"
+                name="notes"
+                required
+                className="form-control"
+                value={editedBook.notes}
+                onChange={changeBookState}
+              />
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="location">Location: </label>
-            <input
-              type="text"
-              name="location"
-              required
-              className="form-control"
-              value={editedBook.location}
-              onChange={changeBookState}
-            />
-          </div>
-        </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="location">Location: </label>
+              <input
+                type="text"
+                name="location"
+                required
+                className="form-control"
+                value={editedBook.location}
+                onChange={changeBookState}
+              />
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="synopsis">Synopsis: </label>
-            <input
-              type="text"
-              name="synopsis"
-              required
-              className="form-control"
-              value={editedBook.synopsis}
-              onChange={changeBookState}
-            />
-          </div>
-        </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="synopsis">Synopsis: </label>
+              <input
+                type="text"
+                name="synopsis"
+                required
+                className="form-control"
+                value={editedBook.synopsis}
+                onChange={changeBookState}
+              />
+            </div>
+          </fieldset>
 
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="rating">Rating: </label>
-            <select
-              type="text"
-              name="rating"
-              required
-              className="form-control"
-              value={editedBook.rating}
-              onChange={changeBookState}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-        </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label htmlFor="rating">Rating: </label>
+              <select
+                type="text"
+                name="rating"
+                required
+                className="form-control"
+                value={editedBook.rating}
+                onChange={changeBookState}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </fieldset>
 
-        <button
-          type="reset"
-          onClick={(evt) => {
-            // Prevent form from being submitted
-            evt.preventDefault()
+          <button
+            type="reset"
+            onClick={(evt) => {
+              // Prevent form from being submitted
+              evt.preventDefault()
 
-            // Send POST request to your API
-            editBook({
-              id: book.id,
-              title: editedBook.title,
-              author: editedBook.author,
-              notes: editedBook.notes,
-              rating: editedBook.rating,
-              location: editedBook.location,
-              synopsis: editedBook.synopsis,
-            })
-          }}
-        >
-          Edit
-        </button>
-      </form>
+              // Send POST request to your API
+              editBook({
+                id: book.id,
+                title: editedBook.title,
+                author: editedBook.author,
+                notes: editedBook.notes,
+                rating: editedBook.rating,
+                location: editedBook.location,
+                synopsis: editedBook.synopsis,
+              })
+            }}
+          >
+            Edit
+          </button>
+        </form>
+      </Container>
     </>
   )
 }
