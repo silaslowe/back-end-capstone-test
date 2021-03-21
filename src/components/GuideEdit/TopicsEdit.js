@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useContext, useRef } from "react"
 import { TopicsContext } from "../Topics/TopicsProvider"
 import { useParams } from "react-router-dom"
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+
+import { BookDisplay } from "../GuideDisplay/BookDisplay"
 
 export const TopicsEdit = (props) => {
   const { topics, getTopicsByBook, destroyTopicRel, setTopics, createTopic } = useContext(
@@ -26,44 +33,68 @@ export const TopicsEdit = (props) => {
   }, [booktopics])
   return (
     <>
-      <h1>Topics</h1>
-      <form className="topic-form">
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="question"> </label>
-            <input type="text" name="topic" required ref={topic} />
-            <input
-              type="reset"
-              value="Add Topic"
-              onClick={() => {
-                createTopic({
-                  bookId: bookId,
-                  topic: topic.current.value.toLowerCase(),
-                }).then((t) => {
-                  setTopics(t)
-                  setBookTopics(t)
-                })
+      <h3>Topics</h3>
+      <Form className="topic-form">
+        <Form.Label htmlFor="topic-edit">Add Topic</Form.Label>
+        <Form.Control type="text" name="topic" required ref={topic} />
+        <Button
+          type="reset"
+          variant="secondary"
+          onClick={() => {
+            createTopic({
+              bookId: bookId,
+              topic: topic.current.value.toLowerCase(),
+            }).then((t) => {
+              setTopics(t)
+              setBookTopics(t)
+            })
+          }}
+        >
+          Add
+        </Button>
+      </Form>
+      <Container>
+        <Row>
+          {topics.map((topic) => (
+            <div
+              className="topic"
+              key={topic.id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: ".5rem",
+                backgroundColor: "lightgray",
+                padding: ".25rem",
+                borderRadius: "5px",
               }}
-            />
-          </div>
-        </fieldset>
-      </form>
-
-      {topics.map((topic) => (
-        <div className="topic" key={topic.id}>
-          <p>{topic.topic}</p>
-          <button
-            onClick={() => {
-              destroyTopicRel({ bookId: bookId, topicId: topic.id }).then((t) => {
-                setTopics(t)
-                setBookTopics(t)
-              })
-            }}
-          >
-            X
-          </button>
-        </div>
-      ))}
+            >
+              <p
+                style={{
+                  margin: "0",
+                  padding: ".25rem",
+                  textTransform: "capitalize",
+                  fontSize: "1.5rem",
+                }}
+              >
+                {topic.topic}
+              </p>
+              <Button
+                variant="outline-primary"
+                style={{ background: "0px", fontSize: "1.25rem", border: "0px" }}
+                onClick={() => {
+                  destroyTopicRel({ bookId: bookId, topicId: topic.id }).then((t) => {
+                    setTopics(t)
+                    setBookTopics(t)
+                  })
+                }}
+              >
+                X
+              </Button>
+            </div>
+          ))}
+        </Row>
+      </Container>
     </>
   )
 }
