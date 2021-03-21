@@ -33,23 +33,26 @@ export const SkillsEdit = (props) => {
     <>
       <h3>Skills</h3>
       <Form className="skill-form">
-        <Form.Label htmlFor="skill-edit">Add Skill</Form.Label>
-        <Form.Control type="text" name="skill" required ref={skill} />
-        <Button
-          type="reset"
-          variant="secondary"
-          onClick={() => {
-            createSkill({
-              bookId: bookId,
-              skill: skill.current.value.toLowerCase(),
-            }).then((s) => {
-              setSkills(s)
-              setBookSkills(s)
-            })
-          }}
-        >
-          Add
-        </Button>
+        {/* <Form.Label htmlFor="skill-edit">Add Skill</Form.Label> */}
+        <Container style={{ display: "flex" }}>
+          <Form.Control style={{ width: "80%" }} type="text" name="skill" required ref={skill} />
+          <Button
+            className="form-btn-side"
+            type="reset"
+            variant="secondary"
+            onClick={() => {
+              createSkill({
+                bookId: bookId,
+                skill: skill.current.value.toLowerCase(),
+              }).then((s) => {
+                setSkills(s)
+                setBookSkills(s)
+              })
+            }}
+          >
+            Add
+          </Button>
+        </Container>
       </Form>
       <Container>
         <Row>

@@ -16,3 +16,10 @@ code {
 /* img {
   width: 175px;
 } */
+
+.form-btn-below {
+  margin: 0.5rem 0;
+}
+.form-btn-side {
+  margin: 0 0.5rem;
+}
