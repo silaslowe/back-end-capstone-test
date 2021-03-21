@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
+import Image from "react-bootstrap/Image"
 
 export const OpenLibraryBook = ({ props, book }) => {
   const { createNewGuide } = useContext(BooksContext)
@@ -42,25 +43,4 @@ export const OpenLibraryBook = ({ props, book }) => {
       </Col>
     </>
   )
-}
-
-{
-  /* <div key={book.edition_key[0]} className="ol-book">
-<img src={`http://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg` || {}} />
-<p>Title: {book.title}</p>
-<p>Author: {authors}</p>
-<button
-  onClick={() => {
-    createNewGuide({
-      author: authors,
-      coverUrl:
-        `http://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg` || {},
-      title: book.title,
-      publishYear: book.first_publish_year,
-    })
-  }}
->
-  Save Book
-</button>
-</div> */
 }

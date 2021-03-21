@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { BooksContext } from "../Books/BooksProvider"
+import Image from "react-bootstrap/Image"
 
 export const BookDisplay = (props) => {
   const { setBooks, books, getSingleBook, book } = useContext(BooksContext)
@@ -26,7 +27,7 @@ export const BookDisplay = (props) => {
         Edit Guide
       </button>
       <h2>Book Details:</h2>
-      <img src={book.cover_url} />
+      <Image src={book.cover_url} thumbnail />
       <h3>Title: {book.title}</h3>
       <h3>Author: {book.author}</h3>
       <h3>Synopsis: {book.synopsis}</h3>
