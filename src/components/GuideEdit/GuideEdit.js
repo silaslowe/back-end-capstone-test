@@ -9,6 +9,7 @@ import { VocabEditDisplay } from "./VocabEditDisplay"
 import Container from "react-bootstrap/Container"
 import Form from "react-bootstrap/Form"
 import Image from "react-bootstrap/Image"
+import Button from "react-bootstrap/Button"
 
 export const GuideEdit = (props) => {
   const history = useHistory()
@@ -143,7 +144,7 @@ export const GuideEdit = (props) => {
         <SkillsEdit {...props} />
         <VocabEditDisplay {...props} />
         <QuestionEditDisplay {...props} />
-        <button
+        <Button
           onClick={(evt) => {
             evt.preventDefault()
 
@@ -159,7 +160,7 @@ export const GuideEdit = (props) => {
           }}
         >
           Save
-        </button>
+        </Button>
       </Container>
     </>
   )
