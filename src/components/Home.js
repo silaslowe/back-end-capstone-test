@@ -8,7 +8,6 @@ export const Home = (props) => {
     <>
       <Navigation {...props} />
       <h1>Home</h1>
-      <Button variant="primary">Primary</Button>{" "}
     </>
   )
 }

@@ -10,8 +10,7 @@ export const Navigation = (props) => {
       <Navbar.Brand href="">ReadAloud</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="mr-auto"></Nav>
-        <Nav>
+        <Nav className="mr-auto">
           <NavDropdown title="Menu" id="collasible-nav-dropdown">
             <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
             <NavDropdown.Item href="/searchol">New Guide</NavDropdown.Item>
