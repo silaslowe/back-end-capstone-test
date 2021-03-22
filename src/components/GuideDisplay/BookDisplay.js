@@ -34,7 +34,7 @@ export const BookDisplay = (props) => {
                 <Card.Text>Author: {book.author}</Card.Text>
                 <Card.Text>Synopsis: {book.synopsis}</Card.Text>
                 <Card.Text>Published: {book.publish_year}</Card.Text>
-                <Card.Text>Location of Book: {book.Location}</Card.Text>
+                <Card.Text>Location of Book: {book.location}</Card.Text>
                 <Card.Text>Rating: {book.rating}</Card.Text>
                 <Button
                   onClick={() => {
