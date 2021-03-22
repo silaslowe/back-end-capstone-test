@@ -36,7 +36,7 @@ export const OpenLibrarySearch = (props) => {
   return (
     <>
       <Container>
-        <h1>Open Library Search</h1>
+        <h2>Open Library Search</h2>
         <Form onSubmit={handleSubmit(onSubmitTitle)} onChange={handleControlledInputChange}>
           <Form.Label>Number of Responses:</Form.Label>
           <Form.Control
@@ -50,7 +50,7 @@ export const OpenLibrarySearch = (props) => {
           />
           <Form.Label>Search By Title: </Form.Label>
           <Form.Control name="searchByTitle" ref={register} />
-          <Button variant="primary" type="submit">
+          <Button className="form-btn-below" variant="secondary" type="submit">
             Search
           </Button>
         </Form>
@@ -58,7 +58,7 @@ export const OpenLibrarySearch = (props) => {
         <Form onSubmit={handleSubmit(onSubmitAuthor)} onChange={handleControlledInputChange}>
           <Form.Label>Search By Author: </Form.Label>
           <Form.Control name="searchByAuthor" ref={register} />
-          <Button variant="primary" type="submit">
+          <Button className="form-btn-below" variant="secondary" type="submit">
             Search
           </Button>
         </Form>
