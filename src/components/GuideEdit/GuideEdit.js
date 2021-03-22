@@ -65,7 +65,7 @@ export const GuideEdit = (props) => {
           <Image
             src={book.cover_url}
             alt={`${book.title} cover art`}
-            style={{ width: "50%" }}
+            style={{ width: "95%" }}
             thumbnail
           />
           <Form className="book-form">

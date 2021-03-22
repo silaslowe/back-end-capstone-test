@@ -18,7 +18,7 @@ export const BookDisplay = (props) => {
   useEffect(() => {
     getSingleBook(bookId)
   }, [])
-
+  console.log(book)
   return (
     <>
       <h2 style={{ textAlign: "center" }}>Book Details:</h2>
@@ -34,7 +34,7 @@ export const BookDisplay = (props) => {
                 <Card.Text>Author: {book.author}</Card.Text>
                 <Card.Text>Synopsis: {book.synopsis}</Card.Text>
                 <Card.Text>Published: {book.publish_year}</Card.Text>
-                <Card.Text>Location of Book: {book.Location}</Card.Text>
+                <Card.Text>Location of Book: {book.location}</Card.Text>
                 <Card.Text>Rating: {book.rating}</Card.Text>
                 <Button
                   onClick={() => {
@@ -59,40 +59,45 @@ export const BookDisplay = (props) => {
         <h2>Questions:</h2>
         <Container>
           <Row>
-            {book.questions.map((question) => (
-              <Card style={{ width: "27rem", margin: "1rem" }}>
-                <Card.Body>
-                  <div>
-                    <Card.Title>{question.question}</Card.Title>
-                    <Card.Text>Page: {question.page}</Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
+            {book.questions
+              .sort((a, b) => parseInt(a.page) - parseInt(b.page))
+              .map((question) => (
+                <Card style={{ width: "27rem", margin: "1rem" }}>
+                  <Card.Body>
+                    <div>
+                      <Card.Title>{question.question}</Card.Title>
+                      <Card.Text>Page: {question.page}</Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+              ))}
           </Row>
         </Container>
         <h2>Vocabulary Words:</h2>
         <Container>
           <Row>
-            {book.vocab.map((vocab) => (
-              <Card style={{ width: "27rem", margin: "1rem" }}>
-                <Card.Body
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between ",
-                  }}
-                >
-                  <div>
-                    <Card.Title>{vocab.word}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">
-                      Def: {vocab.definition}
-                    </Card.Subtitle>
-                    <Card.Text>TeachingNotes: {vocab.notes}</Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
+            {book.vocab
+              .sort((a, b) => parseInt(a.page) - parseInt(b.page))
+              .map((vocab) => (
+                <Card style={{ width: "27rem", margin: "1rem" }}>
+                  <Card.Body
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between ",
+                    }}
+                  >
+                    <div>
+                      <Card.Title>{vocab.word}</Card.Title>
+                      <Card.Subtitle className="mb-2 text-muted">
+                        Def: {vocab.definition}
+                      </Card.Subtitle>
+                      <Card.Text>Page: {vocab.page}</Card.Text>
+                      <Card.Text>TeachingNotes: {vocab.notes}</Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+              ))}
           </Row>
         </Container>
         <Container>
