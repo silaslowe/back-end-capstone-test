@@ -1,11 +1,12 @@
-import React from "react"
+import React, { Component } from "react"
 import { Route } from "react-router-dom"
-import { Home } from "./components/Home"
+import { Search } from "./components/Search/Search"
 import { OpenLibrary } from "./components/OpenLibrary/OpenLibrary"
 import { OpenLibraryProvider } from "./components/OpenLibrary/OpenLibraryProvider"
 import { ProfileProvider } from "./components/Profile/ProfileProvider"
 import { CurrentProfile } from "./components/Profile/CurrentProfile"
 import { Guide } from "./components/GuideDisplay/Guide"
+import { SearchGuideDisplay } from "./components/Search/SearchGuideDisplay"
 import { BooksProvider } from "./components/Books/BooksProvider"
 import { GuideEdit } from "./components/GuideEdit/GuideEdit"
 import { QuesitonsProvider } from "./components/Questions/QuestionProvider"
@@ -25,9 +26,16 @@ export const ApplicationViews = (props) => {
                   <VocabProvider>
                     <Route
                       exact
-                      path="/"
+                      path="/search"
                       render={(props) => {
-                        return <Home {...props} />
+                        return <Search {...props} />
+                      }}
+                    />
+                    <Route
+                      exact
+                      path="/search-guide/:bookId(\d+)"
+                      render={(props) => {
+                        return <SearchGuideDisplay {...props} />
                       }}
                     />
                     <Route
@@ -39,7 +47,7 @@ export const ApplicationViews = (props) => {
                     />
                     <Route
                       exact
-                      path="/profile"
+                      path="/"
                       render={(props) => {
                         return <CurrentProfile {...props} />
                       }}

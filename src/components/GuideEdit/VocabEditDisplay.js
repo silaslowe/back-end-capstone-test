@@ -28,7 +28,7 @@ export const VocabEditDisplay = (props) => {
   return (
     <>
       <h3>Vocabulary Words</h3>
-      <Container>
+      <Container className="align-items-center">
         <Form className="vocab-create-form" style={{ width: "80%" }}>
           <Form.Label htmlFor="word">Vocabulary Word</Form.Label>
           <Form.Control type="text" name="word" required ref={word} />
