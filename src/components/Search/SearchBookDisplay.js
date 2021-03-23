@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useHistory } from "react-router-dom"
+import { BooksContext } from "../Books/BooksProvider"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
 
-export const ProfileBookDisplay = (props) => {
+export const SearchBookDisplay = (props) => {
   const history = useHistory()
+  const { BookProfileRel } = useContext(BooksContext)
   const book = props.book
 
   console.log("FROM DISPLAY", book)
@@ -27,7 +29,7 @@ export const ProfileBookDisplay = (props) => {
           </Card.Body>
           <Button
             onClick={() => {
-              history.push(`/guide/${book.id}`)
+              history.push(`/search-guide/${book.id}`)
             }}
           >
             View Guide

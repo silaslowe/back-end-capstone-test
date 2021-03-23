@@ -8,8 +8,8 @@ import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 
-export const BookDisplay = (props) => {
-  const { setBooks, books, getSingleBook, book } = useContext(BooksContext)
+export const BookSaveDisplay = (props) => {
+  const { setBooks, book, getSingleBook, bookProfileRel } = useContext(BooksContext)
   // Gets id of selected book from props
   const bookId = parseInt(useParams().bookId)
 
@@ -36,20 +36,17 @@ export const BookDisplay = (props) => {
                 <Card.Text>Published: {book.publish_year}</Card.Text>
                 <Card.Text>Location of Book: {book.location}</Card.Text>
                 <Card.Text>Rating: {book.rating}</Card.Text>
-                {book.is_current_user ? (
-                  <Button
-                    onClick={() => {
-                      // Clears book state
-                      setBooks([])
-                      // Navigate to edit form for selected book
-                      history.push({ pathname: `/guide-edit/${book.id}`, state: { book } })
-                    }}
-                  >
-                    Edit Guide
-                  </Button>
-                ) : (
-                  <></>
-                )}
+                <Button
+                  onClick={() => {
+                    // Clears book state
+                    setBooks([])
+                    bookProfileRel(book.id)
+                    // Navigate to edit form for selected book
+                    history.push({ pathname: `/guide/${book.id}`, state: { book } })
+                  }}
+                >
+                  Save Guide
+                </Button>
               </Card.Body>
             </Card>
           </Col>

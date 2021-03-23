@@ -71,13 +71,7 @@ export const BooksProvider = (props) => {
       },
     })
       .then((response) => response.json())
-      .then((res) => {
-        if (!res) {
-          alert("No Matching Books")
-        } else {
-          setBooks(res)
-        }
-      })
+      .then(setBooks)
   }
 
   const getBooksByTopic = (search) => {
@@ -100,6 +94,48 @@ export const BooksProvider = (props) => {
       .then(setBooks)
   }
 
+  const getBooksBySkillSearch = (search) => {
+    return fetch(`http://localhost:8000/books?skill=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
+  const getBooksByTopicSearch = (search) => {
+    return fetch(`http://localhost:8000/books?topic=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
+  const getBooksByTitleSearch = (search) => {
+    return fetch(`http://localhost:8000/books?title=${search}`, {
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(setBooks)
+  }
+
+  const bookProfileRel = (bookId) => {
+    return fetch(`http://localhost:8000/books/${bookId}/book_profile_rel`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${localStorage.getItem("active_user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookId),
+    })
+  }
+
+  console.log(books)
   return (
     <BooksContext.Provider
       value={{
@@ -113,6 +149,10 @@ export const BooksProvider = (props) => {
         getBooksBySkill,
         getBooksByTopic,
         getBooksByTitle,
+        getBooksBySkillSearch,
+        getBooksByTitleSearch,
+        getBooksByTopicSearch,
+        bookProfileRel,
         editBook,
       }}
     >
