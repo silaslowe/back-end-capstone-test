@@ -1,4 +1,5 @@
 import React from "react"
+import { Footer } from "../Nav/Footer"
 import { Navigation } from "../Nav/Nav"
 import { OpenLibrarySearch } from "./OpenLibarySearch"
 
