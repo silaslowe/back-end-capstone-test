@@ -78,7 +78,7 @@ export const TopicsEdit = (props) => {
                   margin: "0",
                   padding: ".25rem",
                   textTransform: "capitalize",
-                  fontSize: "1.5rem",
+                  fontSize: "1rem",
                 }}
               >
                 {topic.topic}

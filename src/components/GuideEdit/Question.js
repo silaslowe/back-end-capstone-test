@@ -58,7 +58,7 @@ export const Question = ({ question }) => {
           </div>
           <Button
             className="form-btn-below"
-            style={{ width: "25%" }}
+            style={{ width: "22%" }}
             variant="secondary"
             onClick={() => setEdit(true)}
           >

@@ -29,3 +29,7 @@ nav {
 .form-btn-side {
   margin: 0 0.5rem;
 }
+
+.form-group {
+  padding: "1rem";
+}

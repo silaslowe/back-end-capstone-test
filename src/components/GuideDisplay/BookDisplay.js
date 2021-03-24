@@ -63,7 +63,7 @@ export const BookDisplay = (props) => {
         </Row>
       </Container>
       <Container>
-        <Card.Title>Lesson Notes</Card.Title>
+        <h3>Lesson Notes: </h3>
         <Card.Text>{book.notes}</Card.Text>
       </Container>
       <Container>
@@ -133,7 +133,7 @@ export const BookDisplay = (props) => {
                     margin: "0",
                     padding: ".25rem",
                     textTransform: "capitalize",
-                    fontSize: "1.5rem",
+                    fontSize: "1rem",
                   }}
                 >
                   {topic.topic}
@@ -147,7 +147,7 @@ export const BookDisplay = (props) => {
           <Row>
             {book.skills.map((skill) => (
               <div
-                className="topic"
+                className="skill"
                 key={skill.id}
                 style={{
                   display: "flex",
@@ -164,7 +164,7 @@ export const BookDisplay = (props) => {
                     margin: "0",
                     padding: ".25rem",
                     textTransform: "capitalize",
-                    fontSize: "1.5rem",
+                    fontSize: "1rem",
                   }}
                 >
                   {skill.skill}
