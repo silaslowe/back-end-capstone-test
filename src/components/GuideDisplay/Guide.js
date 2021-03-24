@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react"
 import { Navigation } from "../Nav/Nav"
 import { BooksContext } from "../Books/BooksProvider"
 import { BookDisplay } from "./BookDisplay"
+import { Footer } from "../Nav/Footer"
 
 export const Guide = (props) => {
   const { book, getSingleBook } = useContext(BooksContext)

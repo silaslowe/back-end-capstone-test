@@ -13,14 +13,21 @@ export const ProfileBookDisplay = (props) => {
   return (
     <>
       <Col md="auto" className="align-self-center">
-        <Card style={{ width: "250px", height: "490px", margin: ".5rem" }}>
+        <Card
+          style={{
+            width: "250px",
+            height: "490px",
+            margin: ".5rem",
+            background: book.is_current_user ? "lightgray" : "white",
+          }}
+        >
           <Card.Img
             // variant="top"
-            style={{ verticalAlign: "middle" }}
             className="text-center"
             src={book.cover_url}
             alt={`${book.title} cover`}
           />
+
           <Card.Body className="align-bottom">
             <Card.Title>Title: {book.title}</Card.Title>
             <Card.Text>Author: {book.author}</Card.Text>

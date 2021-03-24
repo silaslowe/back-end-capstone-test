@@ -28,7 +28,7 @@ export const ProfileSearch = (props) => {
   //   const onSubmitSkill = (search) => {
   //     getBooksBySkill(search)
   //   }
-
+  console.log(books)
   const topicSearch = (search) => {
     if (!isEmpty(search)) {
       const searchTopic = search.topic.toLowerCase()
@@ -72,7 +72,7 @@ export const ProfileSearch = (props) => {
     <>
       <Container>
         <Container>
-          <Form onChange={handleControlledInputChange} style={{ margin: "3rem 0 0 0" }}>
+          <Form onChange={handleControlledInputChange} style={{ margin: "2rem 0 0 0" }}>
             <Form.Group controlId="skill">
               <Form.Label>Book By Skill</Form.Label>
               <Form.Control ref={register} type="skill" placeholder="Enter Skill" name="skill" />
@@ -91,7 +91,7 @@ export const ProfileSearch = (props) => {
               Submit
             </Button>
           </Form>
-
+          <br />
           <Form onChange={handleControlledInputChange}>
             <Form.Group controlId="topic">
               <Form.Label>Book By Topic</Form.Label>
@@ -111,7 +111,7 @@ export const ProfileSearch = (props) => {
               Submit
             </Button>
           </Form>
-
+          <br />
           <Form onChange={handleControlledInputChange} style={{ margin: " 0 0 3rem 0" }}>
             <Form.Group controlId="title">
               <Form.Label>Book By Title</Form.Label>
@@ -132,6 +132,7 @@ export const ProfileSearch = (props) => {
             </Button>
           </Form>
         </Container>
+        <h5 style={{ margin: "1rem 0 0 0" }}>Editable books by user have grey background:</h5>
 
         <Container fluid>
           <Row className="align-self-center">

@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
+import { Footer } from "../Nav/Footer"
 
 export const BookDisplay = (props) => {
   const { setBooks, books, getSingleBook, book } = useContext(BooksContext)
@@ -21,11 +22,18 @@ export const BookDisplay = (props) => {
   console.log(book)
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>Book Details:</h2>
-      <Container style={{ display: "flex", flexDirection: "Row" }}>
+      <h3 style={{ textAlign: "center", margin: "1.5rem 0 1.5rem 0" }}>Book Details:</h3>
+      <Container
+        style={{
+          display: "flex",
+          flexDirection: "Row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Row>
-          <Col sm="auto">
-            <Image src={book.cover_url} style={{ width: "95%" }} thumbnail />
+          <Col style={{ width: "40%" }}>
+            <Image src={book.cover_url} style={{ width: "100%" }} thumbnail />
           </Col>
           <Col sm="auto">
             <Card>
@@ -56,7 +64,7 @@ export const BookDisplay = (props) => {
         </Row>
       </Container>
       <Container>
-        <Card.Title>Lesson Notes</Card.Title>
+        <h3>Lesson Notes: </h3>
         <Card.Text>{book.notes}</Card.Text>
       </Container>
       <Container>
@@ -66,7 +74,7 @@ export const BookDisplay = (props) => {
             {book.questions
               .sort((a, b) => parseInt(a.page) - parseInt(b.page))
               .map((question) => (
-                <Card style={{ width: "27rem", margin: "1rem" }}>
+                <Card key={question.id} style={{ width: "27rem", margin: "1rem" }}>
                   <Card.Body>
                     <div>
                       <Card.Title>{question.question}</Card.Title>
@@ -83,7 +91,7 @@ export const BookDisplay = (props) => {
             {book.vocab
               .sort((a, b) => parseInt(a.page) - parseInt(b.page))
               .map((vocab) => (
-                <Card style={{ width: "27rem", margin: "1rem" }}>
+                <Card key={vocab.id} style={{ width: "27rem", margin: "1rem" }}>
                   <Card.Body
                     style={{
                       display: "flex",
@@ -105,65 +113,73 @@ export const BookDisplay = (props) => {
           </Row>
         </Container>
         <Container>
-          <h3>Topics:</h3>
           <Row>
-            {book.topics.map((topic) => (
-              <div
-                className="topic"
-                key={topic.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: ".5rem",
-                  backgroundColor: "lightgray",
-                  padding: ".25rem",
-                  borderRadius: "5px",
-                }}
-              >
-                <p
-                  style={{
-                    margin: "0",
-                    padding: ".25rem",
-                    textTransform: "capitalize",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  {topic.topic}
-                </p>
-              </div>
-            ))}
-          </Row>
-        </Container>
-        <Container>
-          <h3>Skills:</h3>
-          <Row>
-            {book.skills.map((skill) => (
-              <div
-                className="topic"
-                key={skill.id}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: ".5rem",
-                  backgroundColor: "lightgray",
-                  padding: ".25rem",
-                  borderRadius: "5px",
-                }}
-              >
-                <p
-                  style={{
-                    margin: "0",
-                    padding: ".25rem",
-                    textTransform: "capitalize",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  {skill.skill}
-                </p>
-              </div>
-            ))}
+            <Col md={6}>
+              <Container>
+                <h3>Topics:</h3>
+                <Row>
+                  {book.topics.map((topic) => (
+                    <div
+                      className="topic"
+                      key={topic.id}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: ".5rem",
+                        backgroundColor: "lightgray",
+                        padding: ".25rem",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          margin: "0",
+                          padding: ".25rem",
+                          textTransform: "capitalize",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {topic.topic}
+                      </p>
+                    </div>
+                  ))}
+                </Row>
+              </Container>
+            </Col>
+            <Col>
+              <Container>
+                <h3>Skills:</h3>
+                <Row>
+                  {book.skills.map((skill) => (
+                    <div
+                      className="skill"
+                      key={skill.id}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: ".5rem",
+                        backgroundColor: "lightgray",
+                        padding: ".25rem",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          margin: "0",
+                          padding: ".25rem",
+                          textTransform: "capitalize",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        {skill.skill}
+                      </p>
+                    </div>
+                  ))}
+                </Row>
+              </Container>
+            </Col>
           </Row>
         </Container>
       </Container>
