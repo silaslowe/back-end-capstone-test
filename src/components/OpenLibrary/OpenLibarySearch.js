@@ -36,7 +36,8 @@ export const OpenLibrarySearch = (props) => {
   return (
     <>
       <Container>
-        <h2>Open Library Search</h2>
+        <h3 style={{ margin: "1.5rem 0 " }}>Open Library Search</h3>
+        <h5 style={{ margin: "0 0 1.5rem 0 " }}>Please search for a book using the fields below</h5>
         <Form onSubmit={handleSubmit(onSubmitTitle)} onChange={handleControlledInputChange}>
           <Form.Label>Number of Responses:</Form.Label>
           <Form.Control

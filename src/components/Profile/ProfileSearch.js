@@ -71,7 +71,6 @@ export const ProfileSearch = (props) => {
   return (
     <>
       <Container>
-        <h5 style={{ margin: "1rem 0 0 0" }}>Editable books by user have grey background:</h5>
         <Container>
           <Form onChange={handleControlledInputChange} style={{ margin: "2rem 0 0 0" }}>
             <Form.Group controlId="skill">
@@ -133,6 +132,8 @@ export const ProfileSearch = (props) => {
             </Button>
           </Form>
         </Container>
+        <h5 style={{ margin: "1rem 0 0 0" }}>Editable books by user have grey background:</h5>
+
         <Container fluid>
           <Row className="align-self-center">
             {books.map((book) => (

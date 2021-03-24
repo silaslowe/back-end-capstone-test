@@ -22,7 +22,7 @@ export const BookDisplay = (props) => {
   console.log(book)
   return (
     <>
-      <h2 style={{ textAlign: "center" }}>Book Details:</h2>
+      <h3 style={{ textAlign: "center", margin: "1.5rem 0 1.5rem 0" }}>Book Details:</h3>
       <Container
         style={{
           display: "flex",

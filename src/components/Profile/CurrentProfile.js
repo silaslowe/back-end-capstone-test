@@ -24,7 +24,7 @@ export const CurrentProfile = (props) => {
     <>
       <Navigation {...props} />
       <Card className="text-center">
-        <Card.Header>Current Profile</Card.Header>
+        <Card.Header>Hello {profile.user.first_name} </Card.Header>
         <Card.Body>
           <Card.Title>
             Name: {profile.user.first_name} {profile.user.last_name}
