@@ -22,10 +22,17 @@ export const BookDisplay = (props) => {
   return (
     <>
       <h2 style={{ textAlign: "center" }}>Book Details:</h2>
-      <Container style={{ display: "flex", flexDirection: "Row" }}>
+      <Container
+        style={{
+          display: "flex",
+          flexDirection: "Row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Row>
-          <Col sm="auto">
-            <Image src={book.cover_url} style={{ width: "95%" }} thumbnail />
+          <Col style={{ width: "40%" }}>
+            <Image src={book.cover_url} style={{ width: "100%" }} thumbnail />
           </Col>
           <Col sm="auto">
             <Card>
@@ -66,7 +73,7 @@ export const BookDisplay = (props) => {
             {book.questions
               .sort((a, b) => parseInt(a.page) - parseInt(b.page))
               .map((question) => (
-                <Card style={{ width: "27rem", margin: "1rem" }}>
+                <Card key={question.id} style={{ width: "27rem", margin: "1rem" }}>
                   <Card.Body>
                     <div>
                       <Card.Title>{question.question}</Card.Title>
@@ -83,7 +90,7 @@ export const BookDisplay = (props) => {
             {book.vocab
               .sort((a, b) => parseInt(a.page) - parseInt(b.page))
               .map((vocab) => (
-                <Card style={{ width: "27rem", margin: "1rem" }}>
+                <Card key={vocab.id} style={{ width: "27rem", margin: "1rem" }}>
                   <Card.Body
                     style={{
                       display: "flex",

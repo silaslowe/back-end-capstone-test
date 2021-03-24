@@ -1,21 +1,27 @@
 @import "./components/OpenLibrary/openlibrarycss/openlibrarysearch.css";
 @import "./components/OpenLibrary/openlibrarycss/openlibrarybook.css";
 @import "./components/Nav/navbar.css";
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Libre+Baskerville&family=Train+One&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; */
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Libre Baskerville", serif !important;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+} */
+
+h2 {
+  margin: 1rem;
 }
 
-/* img {
-  width: 175px;
-} */
+nav {
+  margin-bottom: 1rem;
+}
 
 .form-btn-below {
   margin: 0.5rem 0;

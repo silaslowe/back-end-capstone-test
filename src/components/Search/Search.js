@@ -69,7 +69,7 @@ export const Search = (props) => {
   return (
     <>
       <Navigation {...props} />
-      <h3>Search Profiles for Guide</h3>
+      <h3 style={{ textAlign: "center" }}>Search Profiles for Guides</h3>
       <Container>
         <Container>
           <Form onChange={handleControlledInputChange} style={{ margin: "3rem 0 0 0" }}>
