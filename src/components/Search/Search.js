@@ -81,6 +81,7 @@ export const Search = (props) => {
               </Form.Text>
             </Form.Group>
             <Button
+              className="submit-btn"
               variant="secondary"
               type="reset"
               onClick={() => {
@@ -101,6 +102,7 @@ export const Search = (props) => {
               </Form.Text>
             </Form.Group>
             <Button
+              className="submit-btn"
               variant="secondary"
               type="reset"
               onClick={() => {
@@ -121,6 +123,7 @@ export const Search = (props) => {
               </Form.Text>
             </Form.Group>
             <Button
+              className="submit-btn"
               variant="secondary"
               type="reset"
               onClick={() => {
