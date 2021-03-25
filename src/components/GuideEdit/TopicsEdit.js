@@ -85,7 +85,7 @@ export const TopicsEdit = (props) => {
               </p>
               <Button
                 variant="outline-primary"
-                style={{ background: "0px", fontSize: "1.25rem", border: "0px" }}
+                style={{ background: "0px", fontSize: ".75rem", border: "0px" }}
                 onClick={() => {
                   destroyTopicRel({ bookId: bookId, topicId: topic.id }).then((t) => {
                     setTopics(t)

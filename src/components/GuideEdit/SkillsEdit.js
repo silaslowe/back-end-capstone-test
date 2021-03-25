@@ -82,7 +82,7 @@ export const SkillsEdit = (props) => {
               </p>
               <Button
                 variant="outline-primary"
-                style={{ background: "0px", fontSize: "1.25rem", border: "0px" }}
+                style={{ background: "0px", fontSize: ".75rem", border: "0px" }}
                 onClick={() => {
                   destroySkillRel({ bookId: bookId, skillId: skill.id }).then((s) => {
                     setSkills(s)
