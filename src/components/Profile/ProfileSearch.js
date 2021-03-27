@@ -135,7 +135,7 @@ export const ProfileSearch = (props) => {
             </Button>
           </Form>
         </Container>
-        <h5 style={{ margin: "1rem 0 0 0" }}>Editable books by user have grey background:</h5>
+        {/* <h5 style={{ margin: "1rem 0 0 0" }}>Editable books by user have grey background:</h5> */}
 
         <Container fluid>
           <Row className="align-self-center">
